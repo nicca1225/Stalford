@@ -1,19 +1,191 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ─── Tailwind theme tokens ─── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Brand */
+  --color-primary:        #FFC107;
+  --color-primary-hover:  #E6AC00;
+
+  /* Layout */
+  --color-sidebar:        #18181B;
+  --color-page-bg:        #F7F6F3;
+  --color-card:           #FFFFFF;
+  --color-card-border:    #EBEBEA;
+
+  /* Semantic */
+  --color-success:        #22C55E;
+  --color-error:          #EF4444;
+  --color-warning:        #F97316;
+  --color-info:           #3B82F6;
+
+  /* Text */
+  --color-text-primary:   #18181B;
+  --color-text-secondary: #71717A;
+  --color-text-muted:     #A1A1AA;
+
+  /* Subject */
+  --color-math:           #3B82F6;
+  --color-science:        #22C55E;
+  --color-english:        #8B5CF6;
+
+  /* Font — drives ALL Tailwind font-* utilities.
+     Plus Jakarta Sans loads as a web font everywhere;
+     SF Pro kicks in as a bonus on Apple devices. */
+  --font-sans: var(--font-plus-jakarta-sans), 'SF Pro Text',
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: var(--font-plus-jakarta-sans), 'SF Pro Display',
+    -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─── Base layer ─── */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    line-height: 1.5;
+    color: #18181B;
+    background-color: #F7F6F3;
+    overflow-x: hidden;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.04);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.28);
+  }
+
+  /* Text selection */
+  ::selection {
+    background: rgba(255, 193, 7, 0.28);
+    color: #18181B;
+  }
+  ::-moz-selection {
+    background: rgba(255, 193, 7, 0.28);
+    color: #18181B;
+  }
+}
+
+/* ─── Component utilities ─── */
+@layer components {
+  /* SF Pro Display for headings */
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  /* Glass effect */
+  .glass-effect {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+
+  /* Typography scale */
+  .text-hero {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+  }
+
+  .text-large {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .text-body-large {
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  /* Line clamp utilities */
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+}
+
+/* ─── Utility layer ─── */
+@layer utilities {
+  /* Apple-style easing */
+  .transition-apple {
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* Apple-style focus ring */
+  .focus-apple:focus {
+    outline: 2px solid #FFC107;
+    outline-offset: 2px;
+  }
+
+  /* Entrance animations */
+  .animate-fade-in-up {
+    animation: fadeInUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+  .animate-fade-in {
+    animation: fadeIn 0.35s ease-out both;
+  }
+}
+
+/* ─── Keyframes ─── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ─── Responsive typography ─── */
+@media (max-width: 768px) {
+  .text-hero {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+  }
 }

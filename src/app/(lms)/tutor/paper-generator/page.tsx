@@ -1,113 +1,93 @@
 'use client';
 
 import { useState } from 'react';
-import { FileEdit, Sparkles, Download, CheckCircle, ChevronDown } from 'lucide-react';
-import { classes } from '@/lib/mockData';
+import { Sparkles, Download, CheckCircle, FileText } from 'lucide-react';
+import PrimaryButton from '@/components/ui/PrimaryButton';
 
-const topicsWithPerf = [
-  { id: 'fractions', name: 'Fractions', classAvg: 82, needsFocus: true },
-  { id: 'decimals', name: 'Decimals', classAvg: 84, needsFocus: false },
-  { id: 'algebra', name: 'Algebra', classAvg: 85, needsFocus: false },
-  { id: 'geometry', name: 'Geometry', classAvg: 83, needsFocus: true },
-  { id: 'word-problems', name: 'Word Problems', classAvg: 82, needsFocus: true },
-];
+type ClassOption = '' | 'p5-math-a' | 'p5-math-b';
 
-const sampleQuestions = [
-  {
-    q: 1,
-    type: 'MCQ',
-    text: 'A ribbon is 3/4 m long. If you cut off 1/4 m, what fraction of the original ribbon remains?',
-    difficulty: 'Medium',
-    topic: 'Fractions',
-  },
-  {
-    q: 2,
-    type: 'Short Answer',
-    text: 'John has 2.5 kg of flour. He uses 0.75 kg to bake a cake. How much flour does he have left? Round your answer to 2 decimal places.',
-    difficulty: 'Easy',
-    topic: 'Word Problems',
-  },
+const topicsData = [
+  { id: 'algebra',       label: 'Algebra',       avg: 73, defaultChecked: true },
+  { id: 'word-problems', label: 'Word Problems',  avg: 73, defaultChecked: true },
+  { id: 'fractions',     label: 'Fractions',      avg: 79, defaultChecked: false },
 ];
 
 export default function PaperGeneratorPage() {
-  const [selectedClass, setSelectedClass] = useState('');
-  const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
+  const [selectedClass, setSelectedClass] = useState<ClassOption>('');
+  const [checkedTopics, setCheckedTopics] = useState<Record<string, boolean>>({
+    algebra: true,
+    'word-problems': true,
+    fractions: false,
+  });
   const [numQuestions, setNumQuestions] = useState('10');
-  const [difficulty, setDifficulty] = useState('Mixed Recommended');
+  const [difficulty, setDifficulty] = useState('Mixed (Recommended)');
   const [instructions, setInstructions] = useState('');
   const [generated, setGenerated] = useState(false);
   const [generating, setGenerating] = useState(false);
 
-  const toggleTopic = (id: string) => {
-    setSelectedTopics((prev) =>
-      prev.includes(id) ? prev.filter((t) => t !== id) : [...prev, id]
-    );
-  };
-
-  const handleAISuggest = () => {
-    setSelectedTopics(topicsWithPerf.filter((t) => t.needsFocus).map((t) => t.id));
-  };
+  const toggleTopic = (id: string) =>
+    setCheckedTopics((prev) => ({ ...prev, [id]: !prev[id] }));
 
   const handleGenerate = () => {
     if (!selectedClass) return;
     setGenerating(true);
-    setTimeout(() => {
-      setGenerating(false);
-      setGenerated(true);
-    }, 1500);
+    setTimeout(() => { setGenerating(false); setGenerated(true); }, 1200);
   };
 
-  const selectedTopicNames = topicsWithPerf
-    .filter((t) => selectedTopics.includes(t.id))
-    .map((t) => t.name);
+  const selectedTopicLabels = topicsData
+    .filter((t) => checkedTopics[t.id])
+    .map((t) => t.label);
 
   return (
-    <div className="p-8">
-      <div className="mb-6">
-        <div className="flex items-center gap-2 mb-1">
-          <FileEdit size={24} className="text-yellow-500" />
-          <h1 className="text-2xl font-bold text-gray-900">AI Practice Paper Generator</h1>
-        </div>
-        <p className="text-gray-500 text-sm">Generate customized practice papers based on class performance data</p>
+    <>
+      {/* Header */}
+      <div className="mb-8">
+        <h1 className="text-2xl font-bold text-gray-900">AI Practice Paper Generator</h1>
+        <p className="text-gray-500 text-sm mt-1">
+          Generate customized practice papers based on student performance data.
+        </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Left: Configuration */}
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-          <h2 className="font-bold text-gray-900 mb-5">Configure Practice Paper</h2>
+      <div className="flex gap-8 items-start">
 
-          <div className="space-y-4">
+        {/* ── LEFT: Configure ── */}
+        <div className="w-[480px] flex-shrink-0 bg-white rounded-xl border border-gray-100 p-6 shadow-sm">
+          <div className="flex items-center gap-2 mb-6">
+            <Sparkles size={16} className="text-yellow-500" />
+            <span className="font-semibold text-gray-900">Configure Practice Paper</span>
+          </div>
+
+          <div className="flex flex-col gap-5">
+
             {/* Select Class */}
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1.5">Select Class</label>
-              <div className="relative">
-                <select
-                  value={selectedClass}
-                  onChange={(e) => { setSelectedClass(e.target.value); setGenerated(false); }}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm appearance-none focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-white text-gray-700"
-                >
-                  <option value="">Choose a class...</option>
-                  {classes.map((c) => (
-                    <option key={c.id} value={c.id}>{c.name} — {c.subject}</option>
-                  ))}
-                </select>
-                <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
-              </div>
-              {selectedClass && (
-                <p className="text-xs text-gray-500 mt-1">
-                  {classes.find((c) => c.id === selectedClass)?.studentCount} students in this class
-                </p>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Select Class</label>
+              <select
+                value={selectedClass}
+                onChange={(e) => { setSelectedClass(e.target.value as ClassOption); setGenerated(false); }}
+                className="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-white text-gray-700"
+              >
+                <option value="">Choose a class</option>
+                <option value="p5-math-a">P5-Math-A - Mathematics</option>
+                <option value="p5-math-b">P5-Math-B - Mathematics</option>
+              </select>
+              {selectedClass === 'p5-math-a' && (
+                <p className="text-xs text-gray-400 mt-1">3 students in this class</p>
+              )}
+              {selectedClass === 'p5-math-b' && (
+                <p className="text-xs text-gray-400 mt-1">3 students in this class</p>
               )}
             </div>
 
             {/* Subject (auto-filled) */}
             {selectedClass && (
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1.5">Subject</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">Subject</label>
                 <input
-                  readOnly
-                  value={classes.find((c) => c.id === selectedClass)?.subject || ''}
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm bg-gray-50 text-gray-600 cursor-not-allowed"
+                  type="text"
+                  value="Mathematics"
+                  disabled
+                  className="w-full border border-gray-100 rounded-lg px-3 py-2.5 text-sm bg-gray-50 text-gray-500 cursor-not-allowed"
                 />
               </div>
             )}
@@ -116,184 +96,175 @@ export default function PaperGeneratorPage() {
             {selectedClass && (
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <label className="text-sm font-semibold text-gray-700">Topics (AI Recommended)</label>
-                  <button
-                    onClick={handleAISuggest}
-                    className="flex items-center gap-1 text-xs font-semibold text-yellow-700 bg-yellow-100 hover:bg-yellow-200 px-2.5 py-1.5 rounded-lg transition-colors"
-                  >
-                    <Sparkles size={12} />
-                    AI Suggested
-                  </button>
+                  <label className="text-sm font-medium text-gray-700">Topics (AI Recommended)</label>
+                  <span className="flex items-center gap-1 text-[11px] font-semibold bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full">
+                    <Sparkles size={10} /> AI Suggested
+                  </span>
                 </div>
-                <div className="space-y-2">
-                  {topicsWithPerf.map((topic) => (
-                    <label key={topic.id} className="flex items-center justify-between bg-gray-50 rounded-lg px-3 py-2.5 cursor-pointer hover:bg-gray-100">
-                      <div className="flex items-center gap-2">
-                        <input
-                          type="checkbox"
-                          checked={selectedTopics.includes(topic.id)}
-                          onChange={() => toggleTopic(topic.id)}
-                          className="rounded border-gray-300 text-yellow-400 focus:ring-yellow-400"
-                        />
-                        <span className="text-sm text-gray-700">{topic.name}</span>
-                        {topic.needsFocus && (
-                          <span className="text-xs bg-orange-100 text-orange-600 px-2 py-0.5 rounded-full font-medium">Needs focus</span>
-                        )}
-                      </div>
-                      <span className="text-xs text-gray-500">Class avg: {topic.classAvg}%</span>
+                <div className="border border-gray-100 rounded-lg overflow-hidden">
+                  {topicsData.map((t, i) => (
+                    <label
+                      key={t.id}
+                      className={`flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-gray-50 transition-colors
+                        ${i < topicsData.length - 1 ? 'border-b border-gray-100' : ''}`}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={checkedTopics[t.id]}
+                        onChange={() => toggleTopic(t.id)}
+                        className="accent-yellow-400 w-4 h-4"
+                      />
+                      <span className="flex-1 text-sm text-gray-800">{t.label}</span>
+                      <span className="text-xs text-gray-400">Class avg: {t.avg}%</span>
+                      <span className="text-[11px] font-semibold bg-orange-100 text-orange-600 px-2 py-0.5 rounded-full">
+                        Needs focus
+                      </span>
                     </label>
                   ))}
                 </div>
+                <p className="text-[11px] text-gray-400 italic mt-1.5">
+                  ⓘ Topics selected based on lowest class confidence levels
+                </p>
               </div>
             )}
 
             {/* Number of Questions */}
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1.5">Number of Questions</label>
-              <div className="relative">
-                <select
-                  value={numQuestions}
-                  onChange={(e) => setNumQuestions(e.target.value)}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm appearance-none focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-white text-gray-700"
-                >
-                  <option value="5">5 questions — Estimated time: 15 minutes</option>
-                  <option value="10">10 questions — Estimated time: 30 minutes</option>
-                  <option value="15">15 questions — Estimated time: 45 minutes</option>
-                  <option value="20">20 questions — Estimated time: 60 minutes</option>
-                </select>
-                <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
-              </div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Number of Questions</label>
+              <select
+                value={numQuestions}
+                onChange={(e) => setNumQuestions(e.target.value)}
+                className="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-white text-gray-700"
+              >
+                {['5', '10', '15', '20'].map((n) => (
+                  <option key={n} value={n}>{n} questions</option>
+                ))}
+              </select>
+              <p className="text-xs text-gray-400 mt-1">
+                Estimated time: {Number(numQuestions) * 3} minutes
+              </p>
             </div>
 
             {/* Difficulty */}
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1.5">Difficulty Distribution</label>
-              <div className="relative">
-                <select
-                  value={difficulty}
-                  onChange={(e) => setDifficulty(e.target.value)}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm appearance-none focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-white text-gray-700"
-                >
-                  <option>Mixed Recommended</option>
-                  <option>Easy (70%) / Hard (30%)</option>
-                  <option>Balanced (50/50)</option>
-                  <option>Hard (70%) / Easy (30%)</option>
-                </select>
-                <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
-              </div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Difficulty Distribution</label>
+              <select
+                value={difficulty}
+                onChange={(e) => setDifficulty(e.target.value)}
+                className="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-white text-gray-700"
+              >
+                <option>Mixed (Recommended)</option>
+                <option>Easy</option>
+                <option>Medium</option>
+                <option>Hard</option>
+              </select>
             </div>
 
             {/* Additional Instructions */}
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1.5">Additional Instructions (Optional)</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                Additional Instructions <span className="text-gray-400 font-normal">(Optional)</span>
+              </label>
               <textarea
                 value={instructions}
                 onChange={(e) => setInstructions(e.target.value)}
                 rows={3}
-                placeholder="E.g., Focus on real-world word problems, include diagrams..."
-                className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 resize-none"
+                placeholder="E.g., Focus on multi-step problems, include real-world scenarios..."
+                className="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 resize-none placeholder:text-gray-400"
               />
             </div>
 
-            <button
+            {/* Generate button */}
+            <PrimaryButton
+              fullWidth
+              className="flex items-center justify-center gap-2 py-3"
               onClick={handleGenerate}
               disabled={!selectedClass || generating}
-              className="w-full bg-yellow-400 hover:bg-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed text-gray-900 font-semibold py-3 rounded-lg transition-colors flex items-center justify-center gap-2"
             >
-              {generating ? (
-                <>
-                  <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
-                  </svg>
-                  Generating...
-                </>
-              ) : (
-                <>
-                  <Sparkles size={16} />
-                  Generate Practice Paper
-                </>
-              )}
-            </button>
+              <Sparkles size={15} />
+              {generating ? 'Generating...' : 'Generate Practice Paper'}
+            </PrimaryButton>
           </div>
         </div>
 
-        {/* Right: Preview */}
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-          <h2 className="font-bold text-gray-900 mb-5">Generated Paper Preview</h2>
+        {/* ── RIGHT: Preview ── */}
+        <div className="flex-1 bg-white rounded-xl border border-gray-100 p-6 shadow-sm min-h-[400px]">
 
           {!generated ? (
-            <div className="flex flex-col items-center justify-center h-80 text-center">
-              <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mb-4">
-                <FileEdit size={28} className="text-gray-400" />
-              </div>
-              <p className="text-gray-500 font-semibold">Configure and generate a practice paper</p>
-              <p className="text-gray-400 text-sm mt-1">Select a class and topics, then click generate</p>
+            /* Empty state */
+            <div className="h-full flex flex-col items-center justify-center text-center py-20">
+              <FileText size={48} className="text-gray-200 mb-4" />
+              <p className="text-gray-400 font-medium">Configure and generate a practice paper</p>
+              <p className="text-xs text-gray-300 mt-1">Select a class and topics to get started</p>
             </div>
           ) : (
-            <div>
-              <div className="bg-green-50 border border-green-200 rounded-lg p-3 flex items-center gap-2 mb-5">
-                <CheckCircle size={16} className="text-green-500" />
-                <p className="text-sm text-green-700 font-semibold">Practice paper generated successfully!</p>
+            /* Generated state */
+            <div className="flex flex-col gap-5">
+              {/* Success banner */}
+              <div className="bg-green-50 border border-green-200 rounded-lg p-3 flex items-start gap-2">
+                <CheckCircle size={16} className="text-green-500 mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="text-sm font-bold text-green-700">Practice Paper Generated Successfully!</p>
+                  <p className="text-xs text-gray-500 mt-0.5">Your customized practice paper is ready for download.</p>
+                </div>
               </div>
 
-              <div className="space-y-3 mb-5">
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-500">Title</span>
-                  <span className="font-semibold text-gray-900">
-                    {classes.find((c) => c.id === selectedClass)?.name} Practice Paper
-                  </span>
+              {/* Details */}
+              <div>
+                <p className="font-semibold text-gray-900 mb-3">
+                  Mathematics Practice Paper — 3/20/2026
+                </p>
+                <div className="grid grid-cols-2 gap-y-2 text-sm mb-3">
+                  <div>
+                    <span className="text-gray-400 text-xs">Questions</span>
+                    <p className="font-semibold">{numQuestions}</p>
+                  </div>
+                  <div>
+                    <span className="text-gray-400 text-xs">Estimated Time</span>
+                    <p className="font-semibold">{Number(numQuestions) * 3} minutes</p>
+                  </div>
                 </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-500">Questions</span>
-                  <span className="font-semibold text-gray-900">{numQuestions} questions</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-500">Estimated Time</span>
-                  <span className="font-semibold text-gray-900">{Number(numQuestions) * 3} minutes</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-500">Difficulty Level</span>
-                  <span className="font-semibold text-gray-900">{difficulty}</span>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500 mb-2">Topics Covered</p>
+                <div className="mb-3">
+                  <span className="text-xs text-gray-400 block mb-1.5">Topics Covered</span>
                   <div className="flex flex-wrap gap-2">
-                    {(selectedTopicNames.length > 0 ? selectedTopicNames : ['All Topics']).map((t) => (
-                      <span key={t} className="px-2 py-1 bg-yellow-100 text-yellow-700 text-xs font-semibold rounded-full">{t}</span>
+                    {selectedTopicLabels.map((t) => (
+                      <span key={t} className="text-xs font-semibold bg-yellow-100 text-yellow-800 px-2.5 py-1 rounded-full">
+                        {t}
+                      </span>
                     ))}
                   </div>
                 </div>
-              </div>
-
-              <div className="border-t border-gray-100 pt-4 mb-5">
-                <p className="text-sm font-semibold text-gray-700 mb-3">Sample Questions Preview</p>
-                <div className="space-y-3">
-                  {sampleQuestions.map((sq) => (
-                    <div key={sq.q} className="bg-gray-50 rounded-lg p-3">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="text-xs font-bold text-gray-700">Q{sq.q}</span>
-                        <span className="text-xs bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded font-medium">{sq.type}</span>
-                        <span className="text-xs bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded font-medium">{sq.difficulty}</span>
-                        <span className="text-xs bg-yellow-100 text-yellow-700 px-1.5 py-0.5 rounded font-medium">{sq.topic}</span>
-                      </div>
-                      <p className="text-sm text-gray-700">{sq.text}</p>
-                    </div>
-                  ))}
+                <div>
+                  <span className="text-xs text-gray-400">Difficulty Level</span>
+                  <p className="text-sm font-semibold">{difficulty.replace(' (Recommended)', '')}</p>
                 </div>
               </div>
 
-              <button className="w-full bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold py-3 rounded-lg transition-colors flex items-center justify-center gap-2 mb-2">
-                <Download size={16} />
+              {/* Sample questions */}
+              <div className="bg-gray-50 rounded-lg p-4">
+                <p className="text-[11px] text-gray-400 mb-1">Algebra</p>
+                <p className="text-sm text-gray-800 mb-3">
+                  1. Solve for x: 3x + 7 = 22. Show all working steps.
+                </p>
+                <p className="text-[11px] text-gray-400 mb-1">Algebra</p>
+                <p className="text-sm text-gray-800 mb-3">
+                  2. If y = 2x − 5 and x = 8, what is the value of y?
+                </p>
+                <p className="text-xs text-gray-400 italic">... and {Number(numQuestions) - 2} more questions</p>
+              </div>
+
+              {/* Download buttons */}
+              <PrimaryButton fullWidth className="flex items-center justify-center gap-2 py-3">
+                <Download size={15} />
                 Download Practice Paper (PDF)
-              </button>
-              <button className="w-full text-center text-sm text-yellow-600 hover:underline font-medium">
+              </PrimaryButton>
+              <button className="text-sm text-gray-500 hover:text-gray-700 text-center transition-colors">
                 Download Answer Sheet
               </button>
             </div>
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 }

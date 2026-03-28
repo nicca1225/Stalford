@@ -1,117 +1,118 @@
 'use client';
 
 import Link from 'next/link';
-import { Users, AlertCircle, BarChart2 } from 'lucide-react';
-import { classes } from '@/lib/mockData';
+import { Users, TrendingUp, AlertTriangle } from 'lucide-react';
+import StatCard from '@/components/ui/StatCard';
 
-function AvgBadge({ avg }: { avg: number }) {
-  if (avg >= 90) return <span className="px-2 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">Excellent</span>;
-  if (avg >= 80) return <span className="px-2 py-1 bg-yellow-100 text-yellow-700 text-xs font-semibold rounded-full">Good</span>;
-  if (avg >= 70) return <span className="px-2 py-1 bg-orange-100 text-orange-700 text-xs font-semibold rounded-full">Fair</span>;
-  return <span className="px-2 py-1 bg-red-100 text-red-700 text-xs font-semibold rounded-full">Poor</span>;
-}
+const classes = [
+  {
+    id: 'p5-math-a',
+    name: 'P5-Math-A',
+    subject: 'Mathematics',
+    level: 'Primary 5',
+    students: 10,
+    avgScore: 84,
+    quality: 'Good',
+    qualityColor: 'bg-green-100 text-green-700',
+    needAttention: 1,
+  },
+  {
+    id: 'p5-math-b',
+    name: 'P5-Math-B',
+    subject: 'Mathematics',
+    level: 'Primary 5',
+    students: 10,
+    avgScore: 91,
+    quality: 'Good',
+    qualityColor: 'bg-green-100 text-green-700',
+    needAttention: 0,
+  },
+];
 
 export default function TutorAnalyticsPage() {
   return (
-    <div className="p-8">
-      <div className="mb-6">
+    <>
+      {/* Header */}
+      <div className="mb-8">
         <h1 className="text-2xl font-bold text-gray-900">Student Performance Analytics</h1>
-        <p className="text-gray-500 text-sm mt-1">Monitor class performance and identify students needing support</p>
+        <p className="text-gray-500 text-sm mt-1">Overview of all classes you&apos;re teaching.</p>
       </div>
 
-      {/* Stats */}
+      {/* Stats row */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-        <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
-          <div className="flex items-center justify-between mb-2">
-            <p className="text-sm text-gray-500">Total Classes</p>
-            <div className="w-9 h-9 bg-blue-100 rounded-lg flex items-center justify-center">
-              <BarChart2 size={18} className="text-blue-600" />
-            </div>
-          </div>
-          <p className="text-3xl font-bold text-gray-900">2</p>
-          <p className="text-xs text-gray-400 mt-1">Active classes</p>
-        </div>
-        <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
-          <div className="flex items-center justify-between mb-2">
-            <p className="text-sm text-gray-500">Total Students</p>
-            <div className="w-9 h-9 bg-green-100 rounded-lg flex items-center justify-center">
-              <Users size={18} className="text-green-600" />
-            </div>
-          </div>
-          <p className="text-3xl font-bold text-gray-900">20</p>
-          <p className="text-xs text-gray-400 mt-1">enrolled students</p>
-        </div>
-        <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
-          <div className="flex items-center justify-between mb-2">
-            <p className="text-sm text-gray-500">Need Attention</p>
-            <div className="w-9 h-9 bg-orange-100 rounded-lg flex items-center justify-center">
-              <AlertCircle size={18} className="text-orange-600" />
-            </div>
-          </div>
-          <p className="text-3xl font-bold text-gray-900">1</p>
-          <p className="text-xs text-gray-400 mt-1">Below 75% confidence</p>
-        </div>
+        <StatCard
+          title="Total Classes"
+          value={2}
+          subtitle="Active classes"
+          icon={<TrendingUp size={20} />}
+        />
+        <StatCard
+          title="Total Students"
+          value={20}
+          subtitle="Across all classes"
+          icon={<Users size={20} />}
+        />
+        <StatCard
+          title="Students Need Attention"
+          value={1}
+          subtitle="Below 75% confidence"
+          icon={<AlertTriangle size={20} />}
+        />
       </div>
 
-      {/* Classes */}
-      <div>
-        <h2 className="text-lg font-bold text-gray-900 mb-4">Your Classes</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {classes.map((cls) => (
-            <div key={cls.id} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <h3 className="font-bold text-gray-900">{cls.name}</h3>
-                    <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full font-medium">{cls.level}</span>
+      {/* Your Classes */}
+      <h2 className="text-base font-bold text-gray-900 mb-4">Your Classes</h2>
+      <div className="flex flex-col gap-4">
+        {classes.map((c) => (
+          <div key={c.id} className="bg-white rounded-xl border border-gray-100 p-6 shadow-sm">
+            <div className="flex items-center justify-between">
+
+              {/* Left: name + badges */}
+              <div className="flex flex-col gap-3">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="font-bold text-gray-900">{c.name}</span>
+                  <span className="text-xs px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 font-semibold">
+                    {c.subject}
+                  </span>
+                  <span className="text-xs px-2.5 py-0.5 rounded-full bg-zinc-100 text-zinc-500 font-medium">
+                    {c.level}
+                  </span>
+                </div>
+
+                {/* Stats inline */}
+                <div className="flex items-center gap-6 text-sm">
+                  <div className="flex items-center gap-1.5 text-gray-600">
+                    <Users size={14} className="text-gray-400" />
+                    <span>{c.students} Students</span>
                   </div>
-                  <p className="text-sm text-gray-500">{cls.subject}</p>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-3 gap-3 mb-4">
-                <div className="text-center bg-gray-50 rounded-lg p-3">
-                  <p className="text-xs text-gray-500">Students</p>
-                  <p className="font-bold text-gray-900 text-lg">{cls.studentCount}</p>
-                </div>
-                <div className="text-center bg-gray-50 rounded-lg p-3">
-                  <p className="text-xs text-gray-500">Class Avg</p>
-                  <div className="flex flex-col items-center gap-1">
-                    <p className="font-bold text-gray-900 text-lg">{cls.classAverage}%</p>
-                    <AvgBadge avg={cls.classAverage} />
+                  <div className="flex items-center gap-1.5">
+                    <TrendingUp size={14} className="text-gray-400" />
+                    <span className="font-bold text-gray-900">{c.avgScore}%</span>
+                    <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${c.qualityColor}`}>
+                      {c.quality}
+                    </span>
+                    <span className="text-gray-400 text-xs">Class Average</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-gray-600">
+                    <AlertTriangle size={14} className={c.needAttention > 0 ? 'text-orange-500' : 'text-gray-300'} />
+                    <span className={c.needAttention > 0 ? 'text-orange-600 font-semibold' : 'text-gray-400'}>
+                      {c.needAttention} Need Attention
+                    </span>
                   </div>
                 </div>
-                <div className="text-center bg-gray-50 rounded-lg p-3">
-                  <p className="text-xs text-gray-500">Need Attention</p>
-                  <p className={`font-bold text-lg ${cls.needAttention > 0 ? 'text-orange-600' : 'text-green-600'}`}>
-                    {cls.needAttention}
-                  </p>
-                </div>
               </div>
 
-              <div className="mb-3">
-                <div className="flex justify-between text-xs text-gray-500 mb-1">
-                  <span>Class Performance</span>
-                  <span>{cls.classAverage}%</span>
-                </div>
-                <div className="w-full bg-gray-100 rounded-full h-2">
-                  <div
-                    className={`h-2 rounded-full ${cls.classAverage >= 90 ? 'bg-green-500' : cls.classAverage >= 80 ? 'bg-yellow-400' : 'bg-orange-400'}`}
-                    style={{ width: `${cls.classAverage}%` }}
-                  />
-                </div>
-              </div>
-
+              {/* View Details button */}
               <Link
-                href={`/tutor/analytics/${cls.id}`}
-                className="w-full bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold py-2.5 rounded-lg text-sm transition-colors text-center block"
+                href={`/tutor/analytics/${c.id}`}
+                className="flex items-center gap-1.5 bg-[#FFC107] hover:bg-yellow-500 text-black font-semibold text-sm px-5 py-2.5 rounded-lg transition-colors flex-shrink-0"
               >
-                View Details
+                View Details &rsaquo;
               </Link>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
-    </div>
+    </>
   );
 }

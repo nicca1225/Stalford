@@ -1,182 +1,196 @@
 'use client';
 
 import { useState } from 'react';
-import { CalendarCheck, Download, Plus, Users, Clock, AlertTriangle, XCircle, CheckCircle, Filter } from 'lucide-react';
-import { attendanceRecords } from '@/lib/mockData';
+import { Download, Plus, Users, Clock, XCircle, BookOpen } from 'lucide-react';
+import StatCard from '@/components/ui/StatCard';
+import PrimaryButton from '@/components/ui/PrimaryButton';
+import OutlineButton from '@/components/ui/OutlineButton';
 
-function StatusBadge({ status }: { status: string }) {
-  if (status === 'present') return (
-    <span className="flex items-center gap-1 px-2 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
-      <CheckCircle size={12} />Present
-    </span>
-  );
-  if (status === 'late') return (
-    <span className="flex items-center gap-1 px-2 py-1 bg-yellow-100 text-yellow-700 text-xs font-semibold rounded-full">
-      <Clock size={12} />Late
-    </span>
-  );
-  return (
-    <span className="flex items-center gap-1 px-2 py-1 bg-red-100 text-red-700 text-xs font-semibold rounded-full">
-      <XCircle size={12} />Absent
-    </span>
-  );
+type AttendanceStatus = 'Present' | 'Late' | 'Absent';
+
+interface Student {
+  name: string;
+  status: AttendanceStatus;
+  remarks?: string;
 }
 
+interface AttendanceRecord {
+  id: string;
+  class: string;
+  date: string;
+  time: string;
+  mode: 'Physical' | 'Online';
+  markedBy: string;
+  markedAt: string;
+  students: Student[];
+}
+
+const records: AttendanceRecord[] = [
+  {
+    id: '1',
+    class: 'PS-Math-A',
+    date: 'Mar 20, 2026',
+    time: '14:00 – 16:00',
+    mode: 'Physical',
+    markedBy: 'Tutor Gojo',
+    markedAt: '2026-03-20 14:06',
+    students: [
+      { name: 'Emma Tan',    status: 'Present' },
+      { name: 'Ryan Lee',    status: 'Present' },
+      { name: 'Sophie Wong', status: 'Late',   remarks: 'Arrived 15 mins late' },
+    ],
+  },
+  {
+    id: '2',
+    class: 'PS-Math-B',
+    date: 'Mar 20, 2026',
+    time: '16:00 – 18:00',
+    mode: 'Online',
+    markedBy: 'Tutor Gojo',
+    markedAt: '2026-03-20 16:10',
+    students: [
+      { name: 'Emma Tan',    status: 'Present' },
+      { name: 'Ryan Lee',    status: 'Absent' },
+      { name: 'Sophie Wong', status: 'Present' },
+    ],
+  },
+];
+
+const statusStyle: Record<AttendanceStatus, string> = {
+  Present: 'bg-green-100 text-green-700',
+  Late:    'bg-orange-100 text-orange-600',
+  Absent:  'bg-red-100 text-red-600',
+};
+
+const modeBadge: Record<string, string> = {
+  Physical: 'bg-blue-100 text-blue-700',
+  Online:   'bg-green-100 text-green-700',
+};
+
 export default function AttendancePage() {
-  const [classFilter, setClassFilter] = useState('All Classes');
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
-
-  const totalStudentRecords = attendanceRecords.flatMap((r) => r.students);
-  const presentCount = totalStudentRecords.filter((s) => s.status === 'present').length;
-  const lateCount = totalStudentRecords.filter((s) => s.status === 'late').length;
-  const absentCount = totalStudentRecords.filter((s) => s.status === 'absent').length;
-  const totalCount = totalStudentRecords.length;
-  const attendanceRate = Math.round(((presentCount + lateCount) / totalCount) * 100);
-
-  const filtered = attendanceRecords.filter((r) => {
-    if (classFilter !== 'All Classes' && r.class !== classFilter) return false;
-    if (startDate && r.date < startDate) return false;
-    if (endDate && r.date > endDate) return false;
-    return true;
-  });
+  const [classFilter, setClassFilter]   = useState('All Classes');
+  const [startDate,   setStartDate]     = useState('');
+  const [endDate,     setEndDate]       = useState('');
 
   return (
-    <div className="p-8">
-      <div className="flex items-center justify-between mb-6">
+    <>
+      {/* Header */}
+      <div className="flex items-start justify-between mb-2">
         <div>
-          <div className="flex items-center gap-2 mb-1">
-            <CalendarCheck size={24} className="text-yellow-500" />
-            <h1 className="text-2xl font-bold text-gray-900">Attendance Management</h1>
-          </div>
-          <p className="text-gray-500 text-sm">Track and manage student attendance records</p>
+          <h1 className="text-2xl font-bold text-gray-900">Attendance Management</h1>
+          <p className="text-gray-500 text-sm mt-1">
+            Mark and track student attendance for physical and online lessons.
+          </p>
         </div>
-        <div className="flex gap-3">
-          <button className="flex items-center gap-2 border border-gray-300 hover:bg-gray-50 text-gray-700 font-semibold px-4 py-2.5 rounded-lg text-sm transition-colors">
-            <Download size={16} />
+        <div className="flex items-center gap-3">
+          <OutlineButton className="flex items-center gap-2 text-sm">
+            <Download size={14} />
             Export Records
-          </button>
-          <button className="flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold px-4 py-2.5 rounded-lg text-sm transition-colors">
-            <Plus size={16} />
+          </OutlineButton>
+          <PrimaryButton className="flex items-center gap-2 text-sm">
+            <Plus size={14} />
             Mark Attendance
-          </button>
+          </PrimaryButton>
         </div>
       </div>
 
-      {/* Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-        <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
-          <div className="flex items-center gap-2 mb-1">
-            <CalendarCheck size={16} className="text-blue-500" />
-            <p className="text-xs text-gray-500">Total Lessons</p>
-          </div>
-          <p className="text-2xl font-bold text-gray-900">{attendanceRecords.length}</p>
-        </div>
-        <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
-          <div className="flex items-center gap-2 mb-1">
-            <Users size={16} className="text-green-500" />
-            <p className="text-xs text-gray-500">Attendance Rate</p>
-          </div>
-          <p className="text-2xl font-bold text-gray-900">{attendanceRate}%</p>
-        </div>
-        <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
-          <div className="flex items-center gap-2 mb-1">
-            <AlertTriangle size={16} className="text-yellow-500" />
-            <p className="text-xs text-gray-500">Late</p>
-          </div>
-          <p className="text-2xl font-bold text-gray-900">{lateCount}</p>
-        </div>
-        <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
-          <div className="flex items-center gap-2 mb-1">
-            <XCircle size={16} className="text-red-500" />
-            <p className="text-xs text-gray-500">Absent</p>
-          </div>
-          <p className="text-2xl font-bold text-gray-900">{absentCount}</p>
-        </div>
+      {/* Stats row */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-6">
+        <StatCard title="Total Lessons"    value={2}    subtitle="Recorded"  icon={<BookOpen size={18} />} />
+        <StatCard title="Attendance Rate"  value="83%"  subtitle="Overall"   icon={<Users size={18} />} />
+        <StatCard title="Late"             value={1}    subtitle="Students"  icon={<Clock size={18} className="text-orange-500" />} />
+        <StatCard title="Absent"           value={1}    subtitle="Students"  icon={<XCircle size={18} className="text-red-500" />} />
       </div>
 
       {/* Filters */}
-      <div className="flex flex-wrap gap-3 mb-6">
+      <div className="flex flex-wrap items-center gap-4 mb-6">
         <div className="flex items-center gap-2">
-          <Filter size={15} className="text-gray-400" />
+          <span className="text-sm text-gray-600 whitespace-nowrap">Filter by Class:</span>
           <select
             value={classFilter}
             onChange={(e) => setClassFilter(e.target.value)}
-            className="border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-white text-gray-700"
+            className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-white text-gray-700"
           >
             <option>All Classes</option>
-            <option>P5-Math-A</option>
-            <option>P5-Math-B</option>
+            <option>PS-Math-A</option>
+            <option>PS-Math-B</option>
           </select>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-500">From</span>
+          <span className="text-sm text-gray-600 whitespace-nowrap">Filter by Date:</span>
           <input
             type="date"
             value={startDate}
             onChange={(e) => setStartDate(e.target.value)}
-            className="border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-white text-gray-700"
           />
-          <span className="text-sm text-gray-500">to</span>
+          <span className="text-sm text-gray-400">to</span>
           <input
             type="date"
             value={endDate}
             onChange={(e) => setEndDate(e.target.value)}
-            className="border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-white text-gray-700"
           />
         </div>
       </div>
 
-      {/* Attendance Records */}
-      <div className="space-y-4">
-        {filtered.map((record) => (
-          <div key={record.id} className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-            <div className="flex items-center justify-between p-5 bg-gray-50 border-b border-gray-100">
-              <div>
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 bg-yellow-400 rounded-lg flex items-center justify-center">
-                    <CalendarCheck size={18} className="text-gray-900" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-gray-900">{record.class}</p>
-                    <div className="flex items-center gap-3 text-xs text-gray-500 mt-0.5">
-                      <span>{record.date}</span>
-                      <span>•</span>
-                      <span>{record.startTime} – {record.endTime}</span>
-                      <span>•</span>
-                      <span className={`font-medium ${record.mode === 'Physical' ? 'text-blue-600' : 'text-green-600'}`}>
-                        {record.mode}
-                      </span>
-                    </div>
-                  </div>
+      {/* Records */}
+      <p className="font-semibold text-gray-900 mb-4">Attendance Records ({records.length})</p>
+      <div className="flex flex-col gap-6">
+        {records
+          .filter((r) => classFilter === 'All Classes' || r.class === classFilter)
+          .map((rec) => (
+            <div key={rec.id} className="bg-white rounded-xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-shadow">
+
+              {/* Card header */}
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex items-center gap-3 flex-wrap">
+                  <span className="font-bold text-gray-900">{rec.class}</span>
+                  <span className="text-sm text-gray-400">{rec.date}</span>
+                  <span className="text-sm text-gray-400">{rec.time}</span>
+                  <span className={`text-xs font-semibold px-2.5 py-0.5 rounded-full ${modeBadge[rec.mode]}`}>
+                    {rec.mode}
+                  </span>
+                </div>
+                <div className="text-right flex-shrink-0">
+                  <p className="text-xs text-gray-500">Marked by {rec.markedBy}</p>
+                  <p className="text-xs text-gray-400">{rec.markedAt}</p>
                 </div>
               </div>
-              <p className="text-xs text-gray-400">Marked by {record.markedBy}</p>
-            </div>
 
-            <div className="divide-y divide-gray-50">
-              {record.students.map((student, idx) => (
-                <div key={idx} className="flex items-center justify-between px-5 py-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                      <span className="text-xs font-bold text-gray-600">
-                        {student.name.split(' ').map((n) => n[0]).join('')}
-                      </span>
-                    </div>
-                    <p className="text-sm font-semibold text-gray-900">{student.name}</p>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    {student.note && (
-                      <span className="text-xs text-gray-400 italic">{student.note}</span>
-                    )}
-                    <StatusBadge status={student.status} />
-                  </div>
-                </div>
-              ))}
+              {/* Table */}
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-gray-100">
+                    <th className="text-left text-xs font-semibold text-gray-400 pb-2">Student Name</th>
+                    <th className="text-left text-xs font-semibold text-gray-400 pb-2">Status</th>
+                    <th className="text-left text-xs font-semibold text-gray-400 pb-2">Remarks</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-50">
+                  {rec.students.map((s) => (
+                    <tr key={s.name}>
+                      <td className="py-3 font-medium text-gray-900">{s.name}</td>
+                      <td className="py-3">
+                        <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${statusStyle[s.status]}`}>
+                          {s.status}
+                        </span>
+                      </td>
+                      <td className="py-3 text-xs text-gray-400">{s.remarks ?? '—'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+
+              {/* Pagination */}
+              <div className="flex items-center justify-center gap-3 mt-4 pt-3 border-t border-gray-50">
+                <button className="text-gray-400 hover:text-gray-600 transition-colors text-sm">&lsaquo;</button>
+                <span className="text-sm text-gray-600 font-medium">1</span>
+                <button className="text-gray-400 hover:text-gray-600 transition-colors text-sm">&rsaquo;</button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
-    </div>
+    </>
   );
 }
