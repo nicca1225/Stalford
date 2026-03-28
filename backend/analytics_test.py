@@ -5,7 +5,7 @@ from google import genai
 from google.genai import types
 
 # --- 1. SETUP CONFIGURATION ---
-API_KEY = "REDACTED_API_KEY"  
+\
 client = genai.Client(api_key=API_KEY)
 base_directory = "worksheets"
 marking_scheme_path = "Marking_Scheme.pdf"
