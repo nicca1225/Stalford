@@ -54,15 +54,15 @@ export default function LoginPage() {
     <div className="min-h-screen flex flex-col bg-white">
 
       {/* ── Full-width Navbar ── */}
-      <nav className="h-16 bg-white border-b border-gray-100 flex items-center px-8 gap-8 flex-shrink-0 z-10">
-        {/* Logo */}
-        <div className="flex-shrink-0">
+      <nav className="h-16 bg-white border-b border-gray-100 grid grid-cols-3 items-center px-8 flex-shrink-0 z-10">
+        {/* Logo — left col */}
+        <div>
           <p className="font-bold text-gray-900 text-sm tracking-wide leading-none">STALFORD</p>
           <p className="text-[10px] text-gray-400 tracking-widest uppercase">Learning Centre</p>
         </div>
 
-        {/* Center links */}
-        <div className="flex-1 flex items-center justify-center gap-8">
+        {/* Center links — middle col, truly centered */}
+        <div className="flex items-center justify-center gap-8">
           {['Academic Level', 'Crash Course', 'Learning Management System', 'About'].map((link) => (
             <a
               key={link}
@@ -74,8 +74,8 @@ export default function LoginPage() {
           ))}
         </div>
 
-        {/* Right: social + CTA */}
-        <div className="flex items-center gap-4 flex-shrink-0">
+        {/* Right: social + CTA — right col */}
+        <div className="flex items-center gap-4 justify-end">
           <div className="flex items-center gap-3 text-gray-500">
             <a href="#" className="hover:text-pink-500 transition-colors" aria-label="Instagram">
               <InstagramIcon />

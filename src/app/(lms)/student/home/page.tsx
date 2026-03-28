@@ -168,23 +168,21 @@ export default function StudentHomePage() {
                 </div>
               </div>
 
-              {/* Middle: status pills */}
-              <div className="flex items-center gap-2 mx-6">
+              {/* Right: pills + button */}
+              <div className="flex items-center gap-2.5 flex-shrink-0">
                 {t.lessonPending && (
-                  <span className="flex items-center gap-1.5 text-xs text-zinc-500 font-medium bg-zinc-100 px-3 py-1.5 rounded-full">
-                    <Clock size={11} className="text-zinc-400" />
+                  <span className="flex items-center gap-1.5 text-xs text-orange-600 font-medium bg-orange-50 border border-orange-200 px-3 py-1.5 rounded-full">
+                    <Clock size={11} className="text-orange-400" />
                     Lesson Pending
                   </span>
                 )}
-                <span className="text-xs text-zinc-500 font-medium bg-zinc-100 px-3 py-1.5 rounded-full">
+                <span className="text-xs text-blue-600 font-medium bg-blue-50 border border-blue-200 px-3 py-1.5 rounded-full">
                   {t.worksheetsRemaining} worksheet remaining
                 </span>
+                <Link href={`/student/subjects/${t.subjectId}/topics/${t.id}`}>
+                  <PrimaryButton className="text-sm px-5 py-2">Continue</PrimaryButton>
+                </Link>
               </div>
-
-              {/* Right */}
-              <Link href={`/student/subjects/${t.subjectId}/topics/${t.id}`}>
-                <PrimaryButton className="text-sm px-5 py-2">Continue</PrimaryButton>
-              </Link>
             </div>
           ))}
         </div>
