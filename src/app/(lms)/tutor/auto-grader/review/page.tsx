@@ -1,98 +1,46 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { ChevronLeft, CheckCircle, Pencil, X, Save } from 'lucide-react';
+import { getResults } from '@/lib/api';
+import type { DatabaseFeed, DetailedGrading } from '@/types/database';
 
-/* ── Mock question data ─────────────────────────────────── */
-type QStatus = 'correct' | 'incorrect';
+/* ── Question card ──────────────────────────────────────────── */
 
-interface Question {
-  id: number;
-  aiScore: number;
-  maxScore: number;
-  question: string;
-  studentAnswer: string;
-  aiExplanation: string;
-  status: QStatus;
+interface QuestionCardProps {
+  q: DetailedGrading;
+  overrideMark: number;
+  onMarkChange: (qNum: string, val: number) => void;
 }
 
-const initialQuestions: Question[] = [
-  {
-    id: 1, aiScore: 0, maxScore: 1,
-    question: 'Solve: What is the area of a rectangle with length 8 cm and width 5 cm?',
-    studentAnswer: 'The area is 40m²',
-    aiExplanation: 'The answer is correct but you got the units wrong. It should be in cm² and not m²',
-    status: 'incorrect',
-  },
-  {
-    id: 2, aiScore: 1, maxScore: 1,
-    question: 'Solve: Find the perimeter of a square with side length 6 m.',
-    studentAnswer: 'The perimeter is 24m',
-    aiExplanation: 'Perfect! Correct calculation with good knowledge on length of the sides of squares.',
-    status: 'correct',
-  },
-  {
-    id: 3, aiScore: 1, maxScore: 1,
-    question: 'Find the perimeter of a rectangle with length 10 cm and width 3 cm.',
-    studentAnswer: 'The perimeter is 26m',
-    aiExplanation: 'Perfect! Correct calculation on all the sides of a rectangle.',
-    status: 'correct',
-  },
-  {
-    id: 4, aiScore: 1, maxScore: 1,
-    question: 'What do you call a triangle with two equal sides?',
-    studentAnswer: 'Isosceles triangle',
-    aiExplanation: 'Correct! An isosceles triangle has exactly two equal sides.',
-    status: 'correct',
-  },
-  {
-    id: 5, aiScore: 0, maxScore: 1,
-    question: 'Find the area of a triangle with base 6 cm and height 4 cm.',
-    studentAnswer: '24 cm²',
-    aiExplanation: 'Incorrect. Area of triangle = ½ × base × height = ½ × 6 × 4 = 12 cm².',
-    status: 'incorrect',
-  },
-  {
-    id: 6, aiScore: 1, maxScore: 1,
-    question: 'What is the sum of all angles in a triangle?',
-    studentAnswer: '180°',
-    aiExplanation: 'Correct! The sum of interior angles of any triangle is always 180°.',
-    status: 'correct',
-  },
-  {
-    id: 7, aiScore: 1, maxScore: 1,
-    question: 'What is the volume of a cube with side length 3 cm?',
-    studentAnswer: '27 cm³',
-    aiExplanation: 'Correct! Volume = side³ = 3³ = 27 cm³.',
-    status: 'correct',
-  },
-];
+function QuestionCard({ q, overrideMark, onMarkChange }: QuestionCardProps) {
+  const [editing, setEditing] = useState(!q.is_fully_correct);
+  const [status, setStatus] = useState<'correct' | 'incorrect'>(
+    q.is_fully_correct ? 'correct' : 'incorrect'
+  );
+  const [marks, setMarks] = useState(overrideMark);
+  const [explanation, setExplanation] = useState(q.tutor_reasoning);
 
-const qOverrideDefaults: Record<number, number> = { 1: 0, 2: 1, 3: 1, 4: 1, 5: 0, 6: 1, 7: 1 };
+  // First sentence only for the context blurb
+  const contextSentence = q.tutor_reasoning.split(/\.\s+/)[0] + '.';
 
-/* ── Sub-components ─────────────────────────────────────── */
+  const isCorrect = q.is_fully_correct;
+  const cardBase = isCorrect ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200';
+  const badgeBase = isCorrect ? 'bg-green-500 text-white' : 'bg-red-500 text-white';
 
-function QuestionCard({ q }: { q: Question }) {
-  const [editing, setEditing] = useState(q.id === 1); // Q1 open by default
-  const [status, setStatus] = useState<QStatus>(q.status);
-  const [marks, setMarks] = useState(q.aiScore);
-  const [explanation, setExplanation] = useState(q.aiExplanation);
-
-  const isCorrect = q.status === 'correct';
-  const badgeBase = isCorrect
-    ? 'bg-green-500 text-white'
-    : 'bg-red-500 text-white';
-  const cardBase = isCorrect
-    ? 'bg-green-50 border-green-200'
-    : 'bg-red-50 border-red-200';
+  const handleMarkChange = (val: number) => {
+    setMarks(val);
+    onMarkChange(q.question_number, val);
+  };
 
   return (
     <div className={`rounded-xl border p-4 ${cardBase}`}>
       {/* Header */}
       <div className="flex items-center justify-between mb-3">
         <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${badgeBase}`}>
-          Q{q.id} - AI awarded {q.aiScore}/{q.maxScore}
+          Q{q.question_number} — AI awarded {q.marks_awarded}/{q.max_marks}
         </span>
         {editing ? (
           <div className="flex items-center gap-2">
@@ -103,7 +51,7 @@ function QuestionCard({ q }: { q: Question }) {
               <Save size={11} /> Save
             </button>
             <button
-              onClick={() => setEditing(false)}
+              onClick={() => { setEditing(false); setMarks(overrideMark); setExplanation(q.tutor_reasoning); }}
               className="flex items-center gap-1 text-xs border border-gray-300 rounded-lg px-2.5 py-1 bg-white hover:bg-gray-50 font-medium"
             >
               <X size={11} /> Cancel
@@ -119,16 +67,15 @@ function QuestionCard({ q }: { q: Question }) {
         )}
       </div>
 
-      {/* Question */}
-      <p className="text-sm font-bold text-gray-900 mb-2">{q.question}</p>
+      {/* Context sentence */}
+      <p className="text-sm text-gray-700 mb-3">{contextSentence}</p>
 
-      {/* Student answer */}
-      <p className="text-sm mb-3">
-        <span className="text-gray-500">Student answer: </span>
-        <span className={isCorrect ? 'text-green-600 font-medium' : 'text-red-500 font-medium'}>
-          {q.studentAnswer}
-        </span>
-      </p>
+      {!isCorrect && (
+        <p className="text-sm mb-3">
+          <span className="text-gray-500">Student error: </span>
+          <span className="text-red-500 font-medium">{q.error_type ?? '—'}</span>
+        </p>
+      )}
 
       {editing ? (
         <div className="flex flex-col gap-3">
@@ -159,20 +106,20 @@ function QuestionCard({ q }: { q: Question }) {
 
           {/* Marks */}
           <div>
-            <p className="text-xs text-gray-500 mb-1.5">Marks ({q.maxScore} total)</p>
+            <p className="text-xs text-gray-500 mb-1.5">Marks ({q.max_marks} total)</p>
             <input
               type="number"
               min={0}
-              max={q.maxScore}
+              max={q.max_marks}
               value={marks}
-              onChange={(e) => setMarks(Number(e.target.value))}
+              onChange={(e) => handleMarkChange(Number(e.target.value))}
               className="w-20 border border-gray-200 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400"
             />
           </div>
 
           {/* Explanation editable */}
           <div>
-            <p className="text-xs text-gray-500 mb-1.5">AI explanation (editable):</p>
+            <p className="text-xs text-gray-500 mb-1.5">AI explanation:</p>
             <textarea
               value={explanation}
               onChange={(e) => setExplanation(e.target.value)}
@@ -183,23 +130,91 @@ function QuestionCard({ q }: { q: Question }) {
         </div>
       ) : (
         <div>
-          <p className="text-xs text-gray-500 mb-1">AI explanation (editable):</p>
+          <p className="text-xs text-gray-500 mb-1">AI explanation:</p>
           <p className="text-sm text-gray-700">{explanation}</p>
         </div>
       )}
+
+      {/* Tip */}
+      <p className="text-sm text-gray-400 italic mt-3">
+        Tip: {q.student_exam_tip}
+      </p>
     </div>
   );
 }
 
-/* ── Page ────────────────────────────────────────────────── */
+/* ── Page ───────────────────────────────────────────────────── */
 
 export default function AutoGraderReviewPage() {
-  const [questions] = useState<Question[]>(initialQuestions);
-  const [overrideTotal, setOverrideTotal] = useState(8);
-  const [qOverrides, setQOverrides] = useState<Record<number, number>>(qOverrideDefaults);
+  const params = useSearchParams();
+  const studentName = params.get('student') ?? '';
+  const classId = params.get('class') ?? '';
 
-  const correct = Object.values(qOverrideDefaults).filter((v) => v === 1).length;
-  const incorrect = questions.length - correct;
+  const [feed, setFeed] = useState<DatabaseFeed | null>(null);
+  const [overrideTotal, setOverrideTotal] = useState<number>(0);
+  const [qOverrides, setQOverrides] = useState<Record<string, number>>({});
+  const [approved, setApproved] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getResults()
+      .then((data) => {
+        setFeed(data);
+        const classData = data.all_classes.find(
+          (c) => c.class_summary.class_id === classId
+        );
+        const student = classData?.students.find(
+          (s) => s.student_name === studentName
+        );
+        if (student) {
+          setOverrideTotal(student.student_total_marks);
+          const defaults: Record<string, number> = {};
+          for (const q of student.detailed_grading) {
+            defaults[q.question_number] = q.marks_awarded;
+          }
+          setQOverrides(defaults);
+        }
+      })
+      .catch(() => null)
+      .finally(() => setLoading(false));
+  }, [studentName, classId]);
+
+  const classData = feed?.all_classes.find(
+    (c) => c.class_summary.class_id === classId
+  );
+  const student = classData?.students.find(
+    (s) => s.student_name === studentName
+  );
+
+  const handleQMarkChange = (qNum: string, val: number) => {
+    setQOverrides((prev) => ({ ...prev, [qNum]: val }));
+  };
+
+  const correctCount = student?.detailed_grading.filter((q) => q.is_fully_correct).length ?? 0;
+  const incorrectCount = student?.detailed_grading.filter((q) => !q.is_fully_correct).length ?? 0;
+  const totalQuestions = student?.detailed_grading.length ?? 0;
+
+  if (loading) {
+    return (
+      <p className="text-sm text-gray-400 mt-8 text-center">Loading grading data…</p>
+    );
+  }
+
+  if (!student) {
+    return (
+      <>
+        <Link
+          href="/tutor/auto-grader"
+          className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-800 mb-6 transition-colors"
+        >
+          <ChevronLeft size={15} /> Back to Auto Grader
+        </Link>
+        <p className="text-sm text-red-500 mt-4">
+          Student &quot;{studentName}&quot; not found in class &quot;{classId}&quot;.
+        </p>
+      </>
+    );
+  }
 
   return (
     <>
@@ -208,9 +223,18 @@ export default function AutoGraderReviewPage() {
         href="/tutor/auto-grader"
         className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-800 mb-6 transition-colors"
       >
-        <ChevronLeft size={15} />
-        Back to Auto Grader
+        <ChevronLeft size={15} /> Back to Auto Grader
       </Link>
+
+      {/* Approve toast */}
+      {approved && (
+        <div className="mb-6 flex items-center gap-2 bg-green-50 border border-green-200 rounded-lg px-4 py-3">
+          <CheckCircle size={16} className="text-green-600" />
+          <span className="text-sm text-green-700 font-medium">
+            Grading approved for {student.student_name}!
+          </span>
+        </div>
+      )}
 
       {/* Page header */}
       <div className="flex items-start justify-between mb-1">
@@ -220,7 +244,7 @@ export default function AutoGraderReviewPage() {
         </span>
       </div>
       <p className="text-sm text-gray-400 mb-8">
-        Sophie Wong: Decimals Worksheet 1 &middot; Awaiting your approval
+        {student.student_name} &middot; {student.class_id} &middot; Awaiting your approval
       </p>
 
       {/* Two-column layout */}
@@ -232,10 +256,14 @@ export default function AutoGraderReviewPage() {
           {/* Score */}
           <p className="text-sm text-gray-400 text-center mb-1">AI score</p>
           <div className="flex items-end justify-center gap-2 mb-1">
-            <span className="text-5xl font-bold text-[#FFC107]">8</span>
-            <span className="text-2xl text-gray-400 mb-1">/ 10</span>
+            <span className="text-5xl font-bold text-[#FFC107]">
+              {student.student_total_marks}
+            </span>
+            <span className="text-2xl text-gray-400 mb-1">/ {student.paper_total_marks}</span>
           </div>
-          <p className="text-sm text-gray-400 text-center mb-6">AI confidence: 77%</p>
+          <p className="text-sm text-gray-400 text-center mb-6">
+            AI confidence: {student.overall_percentage}%
+          </p>
 
           {/* Override total */}
           <div className="mb-4">
@@ -255,18 +283,18 @@ export default function AutoGraderReviewPage() {
           <div className="max-h-48 overflow-y-auto border border-gray-100 rounded-lg">
             <table className="w-full text-sm">
               <tbody>
-                {questions.map((q) => (
-                  <tr key={q.id} className="border-b border-gray-100 last:border-0">
-                    <td className="py-2 pl-3 text-gray-600 w-8">Q{q.id}</td>
-                    <td className="py-2 text-gray-500">{q.aiScore}/{q.maxScore}</td>
+                {student.detailed_grading.map((q) => (
+                  <tr key={q.question_number} className="border-b border-gray-100 last:border-0">
+                    <td className="py-2 pl-3 text-gray-600 w-10">Q{q.question_number}</td>
+                    <td className="py-2 text-gray-500">{q.marks_awarded}/{q.max_marks}</td>
                     <td className="py-2 pr-3 text-right">
                       <input
                         type="number"
                         min={0}
-                        max={q.maxScore}
-                        value={qOverrides[q.id] ?? q.aiScore}
+                        max={q.max_marks}
+                        value={qOverrides[q.question_number] ?? q.marks_awarded}
                         onChange={(e) =>
-                          setQOverrides((prev) => ({ ...prev, [q.id]: Number(e.target.value) }))
+                          handleQMarkChange(q.question_number, Number(e.target.value))
                         }
                         className="w-12 border border-gray-200 rounded px-2 py-1 text-xs text-center focus:outline-none focus:ring-1 focus:ring-yellow-400"
                       />
@@ -281,20 +309,23 @@ export default function AutoGraderReviewPage() {
           <div className="mt-4 pt-4 border-t border-gray-100 space-y-1.5">
             <div className="flex justify-between text-sm">
               <span className="text-green-600 font-medium">✓ Correct</span>
-              <span className="font-semibold">{correct}</span>
+              <span className="font-semibold">{correctCount}</span>
             </div>
             <div className="flex justify-between text-sm">
               <span className="text-red-500 font-medium">✗ Incorrect</span>
-              <span className="font-semibold">{incorrect}</span>
+              <span className="font-semibold">{incorrectCount}</span>
             </div>
             <div className="flex justify-between text-sm border-t border-gray-100 pt-1.5 mt-1.5">
               <span className="text-gray-600">Total Questions</span>
-              <span className="font-semibold">{questions.length}</span>
+              <span className="font-semibold">{totalQuestions}</span>
             </div>
           </div>
 
           {/* Approve */}
-          <button className="w-full mt-6 bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-lg flex items-center justify-center gap-2 transition-colors">
+          <button
+            onClick={() => setApproved(true)}
+            className="w-full mt-6 bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-lg flex items-center justify-center gap-2 transition-colors"
+          >
             <CheckCircle size={16} />
             Approve
           </button>
@@ -307,8 +338,13 @@ export default function AutoGraderReviewPage() {
         <div className="flex-1 bg-white rounded-xl border border-gray-100 p-6 shadow-sm">
           <p className="font-semibold text-gray-900 mb-4">AI evaluation — review &amp; edit</p>
           <div className="flex flex-col gap-4">
-            {questions.map((q) => (
-              <QuestionCard key={q.id} q={q} />
+            {student.detailed_grading.map((q) => (
+              <QuestionCard
+                key={q.question_number}
+                q={q}
+                overrideMark={qOverrides[q.question_number] ?? q.marks_awarded}
+                onMarkChange={handleQMarkChange}
+              />
             ))}
           </div>
         </div>

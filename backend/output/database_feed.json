@@ -3,840 +3,78 @@
         {
             "class_summary": {
                 "class_id": "P3-MATH-E",
-                "total_students": 2,
+                "total_students": 1,
                 "paper_total_marks": 55,
-                "class_average_percentage": 55,
-                "students_needing_attention": 2,
+                "class_average_percentage": 63,
+                "students_needing_attention": 1,
                 "performance_by_topic": {
-                    "Number Operations": 70,
-                    "Percentage": 84,
-                    "Ratio and Proportion": 67,
-                    "Units of Measurement": 70,
-                    "Problem Solving": 59,
-                    "Geometry": 37,
-                    "Number Patterns and Sequences": 100
+                    "Fractions and Decimals": 71,
+                    "Percentages": 100,
+                    "Ratio and Proportion": 100,
+                    "Measurement": 33,
+                    "Money": 67,
+                    "Geometry": 50,
+                    "Number Patterns and Sequences": 100,
+                    "Algebra": null
                 }
             },
             "students": [
-                {
-                    "student_name": "Ke_Xin",
-                    "class_id": "P3-MATH-E",
-                    "student_total_marks": 37,
-                    "paper_total_marks": 55,
-                    "overall_percentage": 67,
-                    "topic_scores": {
-                        "Number Operations": 40,
-                        "Percentage": 78,
-                        "Ratio and Proportion": 75,
-                        "Units of Measurement": 91,
-                        "Problem Solving": 80,
-                        "Geometry": 25,
-                        "Number Patterns and Sequences": 100
-                    },
-                    "detailed_grading": [
-                        {
-                            "question_number": "1a",
-                            "marks_awarded": 0,
-                            "max_marks": 2,
-                            "topic_tag": "Number Operations",
-                            "is_fully_correct": false,
-                            "error_type": "Conceptual Error",
-                            "tutor_reasoning": "Student incorrectly converted division of fractions (2 3/5 \u00f7 1/8) to multiplication (13/5 \u00d7 1/8), leading to an incorrect intermediate value (13/40). The subsequent calculation '40 \u00f7 13 = 3 R 1' for number of cakes is based on this error. As the method is fundamentally incorrect for the problem's context and the answer is wrong, no marks are awarded.",
-                            "student_exam_tip": "Always double-check fraction division: 'invert and multiply' means inverting the *second* fraction."
-                        },
-                        {
-                            "question_number": "1b",
-                            "marks_awarded": 1,
-                            "max_marks": 2,
-                            "topic_tag": "Units of Measurement",
-                            "is_fully_correct": false,
-                            "error_type": "Calculation Error",
-                            "tutor_reasoning": "The student correctly used the method of subtracting the total sugar used (based on their incorrect answer of 3 cakes from Q1a) from the initial amount of sugar (2 3/5 kg - 3/8 kg). The calculation of 13/5 - 3/8 = 89/40 kg and conversion to 2.225 kg is arithmetically correct. Following Rule (c) for follow-through errors from previous steps, M1 is awarded for the correct method. However, since the final numerical answer does not match the key's 100g (due to the error in Q1a), A0 is given.",
-                            "student_exam_tip": "Ensure accuracy in previous parts of a multi-part question, as errors can cascade."
-                        },
-                        {
-                            "question_number": "2",
-                            "marks_awarded": 2,
-                            "max_marks": 2,
-                            "topic_tag": "Percentage",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly calculated the percentage of the original price represented by the discounted price ($533 / $650 x 100% = 82%). Subsequently, they correctly found the percentage discount (100% - 82% = 18%). Both method and final answer are correct, earning M1 and A1.",
-                            "student_exam_tip": "Continue to apply direct percentage calculation methods accurately."
-                        },
-                        {
-                            "question_number": "3",
-                            "marks_awarded": 2,
-                            "max_marks": 2,
-                            "topic_tag": "Percentage",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly identified the increase in bottles sold (145 - 120 = 25) and then calculated the percentage increase relative to the original amount (25 / 120 x 100%). The rounding to one decimal place (20.8%) is also correct. Both method and final answer are correct, earning M1 and A1.",
-                            "student_exam_tip": "Maintain precision in percentage calculations and rounding."
-                        },
-                        {
-                            "question_number": "4",
-                            "marks_awarded": 0,
-                            "max_marks": 2,
-                            "topic_tag": "Ratio and Proportion",
-                            "is_fully_correct": false,
-                            "error_type": "Conceptual Error",
-                            "tutor_reasoning": "The student correctly converted units (2.5 L to 2500 ml) and identified the total volume of one batch of 'green paint' (2500ml + 500ml = 3000ml). However, the subsequent step '2500 * 2 = 5000' is unexplained and does not correctly apply the ratio to scale up to 4.5 L of 'green paint'. The final answer of 5 L is incorrect. Thus, no marks are awarded for the method or answer.",
-                            "student_exam_tip": "Clearly show how ratios are used for scaling to avoid conceptual leaps or incorrect calculations, especially when dealing with mixtures."
-                        },
-                        {
-                            "question_number": "5",
-                            "marks_awarded": 2,
-                            "max_marks": 2,
-                            "topic_tag": "Problem Solving",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly deduced that the difference in value between two soft toys and two keychains is $33.60 x 2 = $67.20. Since two soft toys are equivalent to five keychains, this implies that three keychains equal $67.20. The student correctly calculated the cost of one keychain ($67.20 / 3 = $22.40) and then the total amount for five keychains ($22.40 x 5 = $112). Both method and final answer are correct, earning M1 and A1.",
-                            "student_exam_tip": "Continue to apply systematic problem-solving strategies for comparison-type questions."
-                        },
-                        {
-                            "question_number": "6",
-                            "marks_awarded": 3,
-                            "max_marks": 3,
-                            "topic_tag": "Problem Solving",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly calculated the discount for one 4th blind box (30% of $16 = $4.80). They then correctly determined the number of discounted boxes received ($24 / $4.80 = 5). Finally, they correctly calculated the total number of boxes by multiplying the number of discounted boxes by 4 (as each discount applies to the 4th box in a set of 4), leading to 5 x 4 = 20 boxes. All steps and the final answer are correct, earning M1 M1 A1.",
-                            "student_exam_tip": "Break down complex word problems into smaller, manageable steps to ensure accuracy."
-                        },
-                        {
-                            "question_number": "7",
-                            "marks_awarded": 3,
-                            "max_marks": 3,
-                            "topic_tag": "Problem Solving",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly applied the unit method (3 units = 750g, 1 unit = 250g, 10 units = 2500g) as per the master scheme's approach, leading to the correct total amount of flour (2500g). Despite the initial fractional derivations not being fully explicit, the numerical progression matches the M1 and A1 criteria for the solution provided in the marking scheme. Awarded M1 for the unit method and A1 for the correct final answer.",
-                            "student_exam_tip": "For unit method problems, clearly define what each unit represents to avoid ambiguity."
-                        },
-                        {
-                            "question_number": "8a",
-                            "marks_awarded": 2,
-                            "max_marks": 2,
-                            "topic_tag": "Ratio and Proportion",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly established the initial ratio of A:B:C as 35:12:3. They then correctly scaled this ratio to 17.5:6:1.5 units and summed these units to find the total (25 units). From this, they correctly identified the fraction of beads in Box B as 6/25. Both method and final answer are correct, earning M1 and A1.",
-                            "student_exam_tip": "Ensure all parts of a ratio are expressed in whole numbers or a consistent unit before summing for total fractions."
-                        },
-                        {
-                            "question_number": "8b",
-                            "marks_awarded": 1,
-                            "max_marks": 1,
-                            "topic_tag": "Ratio and Proportion",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly used the fraction for Box B (6/25) from part (a) and multiplied it by the total number of beads (425) to find the number of beads in Box B (6/25 * 425 = 102). The final answer is correct, earning A1.",
-                            "student_exam_tip": "Utilize results from previous parts of the question accurately for subsequent calculations."
-                        },
-                        {
-                            "question_number": "9",
-                            "marks_awarded": 4,
-                            "max_marks": 4,
-                            "topic_tag": "Units of Measurement",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly calculated the initial volume in Tank B (40 x 40 x 56.25 = 90000 cm\u00b3) and the volume of water transferred to Tank A (40 x 20 x 13.5 = 10800 cm\u00b3). They then correctly subtracted the transferred volume from Tank B's initial volume (90000 - 10800 = 79200 cm\u00b3) and divided by Tank B's base area (40 x 40 = 1600 cm\u00b2) to find the new height (79200 / 1600 = 49.5 cm). All method steps and the final answer are correct, earning M1 M1 M1 A1.",
-                            "student_exam_tip": "Clearly track water levels and corresponding volumes when water is transferred between containers."
-                        },
-                        {
-                            "question_number": "10a",
-                            "marks_awarded": 3,
-                            "max_marks": 3,
-                            "topic_tag": "Percentage",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly calculated the percentage of total money spent on the toaster (45% of 65% = 29.25%) and the total percentage spent (35% + 29.25% = 64.25%). From this, they correctly found the percentage remaining (100% - 64.25% = 35.75%). They then correctly linked this percentage to the given amount ($243.10) and calculated the initial total money ($243.10 / 0.3575 = $680). All method steps and the final answer are correct, earning M1 M1 A1.",
-                            "student_exam_tip": "When dealing with percentages of 'remaining' amounts, ensure you apply the percentage to the correct base (the successively smaller remainder)."
-                        },
-                        {
-                            "question_number": "10b",
-                            "marks_awarded": 0,
-                            "max_marks": 2,
-                            "topic_tag": "Percentage",
-                            "is_fully_correct": false,
-                            "error_type": "Conceptual Error",
-                            "tutor_reasoning": "The student misinterpreted 'all the money she had left' for the washing machine purchase, using the total money from part (a) ($680) instead of the $243.10 explicitly stated as 'left' in the problem. This is a conceptual error in identifying the starting value for the calculation. Consequently, no marks are awarded.",
-                            "student_exam_tip": "Carefully read and understand the context and specific values provided in each part of a problem, especially when referring to 'money left' or 'remaining amount'."
-                        },
-                        {
-                            "question_number": "11a",
-                            "marks_awarded": 1,
-                            "max_marks": 1,
-                            "topic_tag": "Number Operations",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly calculated the cost of one loaf of bread ($377.40 / 102 = $3.70) and then correctly applied the 50% discount to find the discounted price ($3.70 / 2 = $1.85). The final answer is correct, earning A1.",
-                            "student_exam_tip": "Perform division and percentage calculations accurately."
-                        },
-                        {
-                            "question_number": "11b",
-                            "marks_awarded": 0,
-                            "max_marks": 2,
-                            "topic_tag": "Problem Solving",
-                            "is_fully_correct": false,
-                            "error_type": "Conceptual Error",
-                            "tutor_reasoning": "The student incorrectly assumed all muffins sold on Day 2 were at the original price. The problem states that leftover muffins from Day 1 (48) were sold at a discounted price, which was calculated in part (a). The student's calculation '902.80 / 3.70 = 244' directly calculates the total number of muffins sold if *all* were at the original price, thus not accounting for the discounted leftovers. This is a conceptual error.",
-                            "student_exam_tip": "Pay close attention to all conditions and previous calculations within a multi-part problem, especially concerning different pricing tiers."
-                        },
-                        {
-                            "question_number": "12a",
-                            "marks_awarded": 2,
-                            "max_marks": 2,
-                            "topic_tag": "Ratio and Proportion",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly scaled the ratios for Team A (4:1:5 to 16:4:20) and Team B (1:3:4 to 5:15:20) to ensure an equal total number of children (20 units) in both teams. They then correctly summed the boys from both teams (16+5=21) and the total children (20+20=40) to form the ratio 21:40. Both method and final answer are correct, earning M1 and A1.",
-                            "student_exam_tip": "Always ensure the 'total' units are consistent when combining ratios from different groups."
-                        },
-                        {
-                            "question_number": "12b",
-                            "marks_awarded": 1,
-                            "max_marks": 1,
-                            "topic_tag": "Ratio and Proportion",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly identified the largest multiple of 21 (from the boys' total units) that is less than 150 (21 x 7 = 147). They then used this to determine the value of one unit (147 / 21 = 7) and applied it to the total children units (40 x 7 = 280). The final answer is correct, earning A1.",
-                            "student_exam_tip": "When working with 'fewer than' or 'largest possible' conditions, test multiples systematically."
-                        },
-                        {
-                            "question_number": "13a",
-                            "marks_awarded": 1,
-                            "max_marks": 1,
-                            "topic_tag": "Geometry",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly calculated the angle \u2220CFE using the property of an isosceles triangle (180\u00b0 - (47\u00b0 x 2) = 86\u00b0). The final answer is correct, earning A1.",
-                            "student_exam_tip": "Remember angle properties of isosceles triangles (base angles are equal)."
-                        },
-                        {
-                            "question_number": "13b",
-                            "marks_awarded": 0,
-                            "max_marks": 2,
-                            "topic_tag": "Geometry",
-                            "is_fully_correct": false,
-                            "error_type": "Conceptual Error",
-                            "tutor_reasoning": "The student made an arithmetic error in calculating \u2220BCF. Based on the diagram and problem context, \u2220BCF should be \u2220BCD - \u2220FCD = 171\u00b0 - 94\u00b0 = 77\u00b0. The student calculated '171 + 94 = 265' and '360 - 265 = 95'. This method is incorrect for \u2220BCF. As the intermediate values are derived from incorrect steps and the final calculation '180 - 67 - 95' (even if '67' and '95' were correct) is based on these errors, no marks are awarded.",
-                            "student_exam_tip": "Double-check angle relationships and calculations, ensuring each step logically follows from geometric properties. Pay close attention to which angles are added or subtracted."
-                        },
-                        {
-                            "question_number": "13c",
-                            "marks_awarded": 0,
-                            "max_marks": 1,
-                            "topic_tag": "Geometry",
-                            "is_fully_correct": false,
-                            "error_type": "Conceptual Error",
-                            "tutor_reasoning": "The student's answer to both parts of the statement is incorrect. The sum of the angles \u2220GFB, \u2220BFC, and \u2220CFE (which are 78\u00b0, 18\u00b0, 86\u00b0 as per the master scheme, totaling 182\u00b0) is not 180\u00b0, thus GFE 'is not' a straight line. The student indicated 'is' for the first blank, which is incorrect.",
-                            "student_exam_tip": "Review the conditions for a straight line (angles sum to 180 degrees) and apply them carefully."
-                        },
-                        {
-                            "question_number": "14a",
-                            "marks_awarded": 3,
-                            "max_marks": 3,
-                            "topic_tag": "Units of Measurement",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly assumed 34 painted faces (as indicated in the master scheme's breakdown) and used this to find the area of one face (544 cm\u00b2 / 34 = 16 cm\u00b2). They then correctly found the edge length (\u221a16 = 4 cm) and the volume of one cube (4 x 4 x 4 = 64 cm\u00b3). Finally, they calculated the total volume for 8 cubes (64 cm\u00b3 x 8 = 512 cm\u00b3). All method steps and the final answer are correct, earning M1 M1 A1.",
-                            "student_exam_tip": "Clearly list intermediate steps (like edge length and single cube volume) when dealing with composite solids to ensure full marks."
-                        },
-                        {
-                            "question_number": "14b",
-                            "marks_awarded": 2,
-                            "max_marks": 2,
-                            "topic_tag": "Units of Measurement",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly calculated the volume of Solid X (12 cubes x 64 cm\u00b3/cube = 768 cm\u00b3) and the difference in volume between Solid X and Solid W (768 cm\u00b3 - 512 cm\u00b3 = 256 cm\u00b3). Interpreting that this 256 cm\u00b3 represents 8% of the tank's total volume, they correctly calculated the tank's capacity (256 / 8 x 100 = 3200 cm\u00b3). The method and final answer are correct, earning M1 and A1.",
-                            "student_exam_tip": "Carefully phrase and interpret percentage relationships (e.g., '8% more of X' vs. '8% of X') to ensure correct calculations."
-                        },
-                        {
-                            "question_number": "15a",
-                            "marks_awarded": 1,
-                            "max_marks": 1,
-                            "topic_tag": "Number Patterns and Sequences",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly identified all three values for Figure 6 based on the given patterns in the table: 6 white papers, 30 grey papers, and a total of 36 papers. All are correct, earning A1.",
-                            "student_exam_tip": "Ensure all parts of a table completion are accurate according to the established patterns."
-                        },
-                        {
-                            "question_number": "15b",
-                            "marks_awarded": 1,
-                            "max_marks": 1,
-                            "topic_tag": "Number Patterns and Sequences",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly identified the pattern for grey papers as N * (N-1) (14 * 13 = 182) and white papers as N (14). They then correctly summed these to find the total number of papers for Figure 14 (182 + 14 = 196), which follows the N\u00b2 pattern (14\u00b2 = 196). The final answer is correct, earning A1.",
-                            "student_exam_tip": "Verify derived patterns (e.g., N*(N-1) for grey, N for white, N^2 for total) across multiple figures to confirm consistency before applying them."
-                        },
-                        {
-                            "question_number": "15c",
-                            "marks_awarded": 2,
-                            "max_marks": 2,
-                            "topic_tag": "Number Patterns and Sequences",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly used approximation (\u221a462 \u2248 22) to narrow down the figure number. By testing N=22, they would find 22 * (22-1) = 22 * 21 = 462, which matches the number of grey papers. The method of approximation and the final answer are correct, earning M1 and A1.",
-                            "student_exam_tip": "For N(N-1) patterns, use square root approximation to quickly find the value of N."
-                        }
-                    ]
-                },
-                {
-                    "student_name": "Fate",
-                    "class_id": "P6 Standard Mathematics",
-                    "student_total_marks": 24,
-                    "paper_total_marks": 55,
-                    "overall_percentage": 44,
-                    "topic_scores": {
-                        "Number Operations": 100,
-                        "Percentage": 90,
-                        "Ratio and Proportion": 60,
-                        "Units of Measurement": 50,
-                        "Problem Solving": 38,
-                        "Geometry": 50,
-                        "Number Patterns and Sequences": null
-                    },
-                    "detailed_grading": [
-                        {
-                            "question_number": "1a",
-                            "marks_awarded": 2,
-                            "max_marks": 2,
-                            "topic_tag": "Number Operations",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly set up the division (13/5 / 1/8) and performed the calculation accurately to arrive at 20.8, which was then correctly rounded down to the integer 20 for the number of cakes. This aligns with the marking scheme's method and final answer (A1 for calculation, A1 for final answer).",
-                            "student_exam_tip": "Continue to show clear working steps for division problems involving fractions and mixed numbers."
-                        },
-                        {
-                            "question_number": "1b",
-                            "marks_awarded": 0,
-                            "max_marks": 2,
-                            "topic_tag": "Units of Measurement",
-                            "is_fully_correct": false,
-                            "error_type": "Conceptual Error",
-                            "tutor_reasoning": "The student attempted to find the remaining sugar by subtracting an arbitrary value (1.075) from the initial amount. The problem requires calculating the total sugar used for 20 cakes (20 * 1/8 kg) and then subtracting this from the initial amount (2 3/5 kg). The method used and the final answer are incorrect.",
-                            "student_exam_tip": "Ensure all values used in calculations are derived from the problem statement or previous correct steps, and verify unit conversions (e.g., kg to g)."
-                        },
-                        {
-                            "question_number": "2",
-                            "marks_awarded": 2,
-                            "max_marks": 2,
-                            "topic_tag": "Percentage",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly calculated the discount amount ($650 - $533 = $117) and then accurately computed the percentage discount ($117 / $650 * 100% = 18%). Both method (M1) and final answer (A1) are correct.",
-                            "student_exam_tip": "Maintain precision in percentage calculations to avoid minor errors."
-                        },
-                        {
-                            "question_number": "3",
-                            "marks_awarded": 1,
-                            "max_marks": 2,
-                            "topic_tag": "Percentage",
-                            "is_fully_correct": false,
-                            "error_type": "Calculation Error",
-                            "tutor_reasoning": "The student correctly identified the increase (145 - 120 = 25) and set up the percentage increase calculation (25/120 * 100%). This earns M1 for the correct method. However, a calculation error occurred in the final division, leading to an incorrect answer of 28.3% instead of 20.8%.",
-                            "student_exam_tip": "Double-check all division steps, especially when converting fractions to decimals for final percentages."
-                        },
-                        {
-                            "question_number": "4",
-                            "marks_awarded": 0,
-                            "max_marks": 2,
-                            "topic_tag": "Ratio and Proportion",
-                            "is_fully_correct": false,
-                            "error_type": "Conceptual Error",
-                            "tutor_reasoning": "The student correctly noted the initial combination (2.5L blue + 500ml yellow = 3000ml green). This establishes the basic ratio of blue to green paint. However, the subsequent working steps were unclear and did not correctly apply this ratio to determine the amount of blue paint needed for 4.5L of green paint. No method marks could be awarded for a coherent solution leading to the correct answer (3.75L).",
-                            "student_exam_tip": "Clearly define the ratio of components and apply it systematically to find unknown quantities in proportion problems."
-                        },
-                        {
-                            "question_number": "5",
-                            "marks_awarded": 0,
-                            "max_marks": 2,
-                            "topic_tag": "Problem Solving",
-                            "is_fully_correct": false,
-                            "error_type": "Not attempted/Incomplete",
-                            "tutor_reasoning": "The student correctly identified the relationships between soft toys and keychains (2S = 5K, S = K + $33.60). However, no calculation steps were provided to solve the problem, and the final answer was left blank.",
-                            "student_exam_tip": "Even if you can set up the problem, remember to show all steps of your calculation process to earn method marks."
-                        },
-                        {
-                            "question_number": "6",
-                            "marks_awarded": 2,
-                            "max_marks": 3,
-                            "topic_tag": "Problem Solving",
-                            "is_fully_correct": false,
-                            "error_type": "Conceptual Error",
-                            "tutor_reasoning": "The student correctly calculated the discount on one 4th blind box (30% of $16 = $4.80) and the number of discount sets purchased ($24 / $4.80 = 5 sets). This earns M1 for discount calculation and M1 for number of sets. However, the question asked for the 'largest possible number of blind boxes'. This implies that additional boxes could be bought without triggering further discount, which the marking scheme identifies as 2 extra boxes (20 + 2 = 22). The student's answer of 20 does not maximize the number of boxes.",
-                            "student_exam_tip": "Pay close attention to keywords like 'largest possible' which may indicate additional conditions beyond the direct calculation, and consider edge cases."
-                        },
-                        {
-                            "question_number": "7",
-                            "marks_awarded": 1,
-                            "max_marks": 3,
-                            "topic_tag": "Problem Solving",
-                            "is_fully_correct": false,
-                            "error_type": "Conceptual Error",
-                            "tutor_reasoning": "The student correctly identified '3u = 750' and derived '1u = 250' based on the problem's unit representation, earning M1. However, the subsequent steps confused the consistency of '1u' and applied incorrect multipliers (e.g., '1u off at first = 1750', '5u = 1750 x 5'), leading to an incorrect final answer of 8750g.",
-                            "student_exam_tip": "When using unit methods, ensure the value of '1 unit' remains consistent throughout the problem, and clearly label what each unit represents at each step."
-                        },
-                        {
-                            "question_number": "8a",
-                            "marks_awarded": 2,
-                            "max_marks": 2,
-                            "topic_tag": "Ratio and Proportion",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly derived the combined ratio A:B:C = 35:12:3 (M1). Subsequently, they accurately calculated the fraction of beads in Box B as 12/(35+12+3) = 12/50 = 6/25 (A1).",
-                            "student_exam_tip": "Systematically combine individual ratios to form a complete multi-part ratio, ensuring consistent reference points."
-                        },
-                        {
-                            "question_number": "8b",
-                            "marks_awarded": 1,
-                            "max_marks": 1,
-                            "topic_tag": "Ratio and Proportion",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "Using the correct combined ratio from part (a), the student correctly found the total number of units (50u) corresponding to 425 beads, calculated the value of 1 unit (8.5), and then found the number of beads in Box B (12 * 8.5 = 102). This earns A1.",
-                            "student_exam_tip": "Apply the derived unit value consistently to find the quantity for any specific part of the ratio."
-                        },
-                        {
-                            "question_number": "9",
-                            "marks_awarded": 3,
-                            "max_marks": 4,
-                            "topic_tag": "Units of Measurement",
-                            "is_fully_correct": false,
-                            "error_type": "Calculation Error",
-                            "tutor_reasoning": "The student correctly calculated the initial volume of water in Tank B (90000 cm\u00b3) and the final volume of water in Tank A (20400 cm\u00b3), earning two M1 marks. However, a calculation error occurred when determining the initial volume of water in Tank A (12 x 40 x 20 was stated as 19200 instead of 9600). This led to a follow-through error in calculating the volume of water transferred (M1 for method) and subsequently the remaining volume and final height in Tank B, resulting in an incorrect answer of 55.5 cm.",
-                            "student_exam_tip": "Double-check all basic arithmetic calculations, especially multiplications, as early errors can propagate and invalidate subsequent steps."
-                        },
-                        {
-                            "question_number": "10a",
-                            "marks_awarded": 3,
-                            "max_marks": 3,
-                            "topic_tag": "Percentage",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly calculated the overall percentage of money remaining (35.75%) and equated it to $243.10 (M1). They then accurately found the value of 1% ($6.80) (M1) and consequently the total initial money ($680) (A1).",
-                            "student_exam_tip": "This method of working with overall percentages is efficient; ensure all percentage calculations are precise."
-                        },
-                        {
-                            "question_number": "10b",
-                            "marks_awarded": 2,
-                            "max_marks": 2,
-                            "topic_tag": "Percentage",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly identified that a 60% discount means the paid price is 40% of the original. Equating 40% to $243.10 (M1), they accurately calculated the original price by first finding 10% and then 100% ($607.75) (A1).",
-                            "student_exam_tip": "Clearly state the percentage corresponding to the given monetary value before calculating the original amount."
-                        },
-                        {
-                            "question_number": "11a",
-                            "marks_awarded": 1,
-                            "max_marks": 1,
-                            "topic_tag": "Percentage",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly calculated the original cost of one muffin ($377.40 / 102 = $3.70) and then correctly applied the 50% discount to find the discounted price ($3.70 / 2 = $1.85). This earns A1 for the correct final answer derived from correct steps.",
-                            "student_exam_tip": "Ensure all steps are clear and logical for simple arithmetic problems."
-                        },
-                        {
-                            "question_number": "11b",
-                            "marks_awarded": 2,
-                            "max_marks": 2,
-                            "topic_tag": "Number Operations",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly calculated the earnings from leftover muffins (48 * $1.85 = $88.80) (M1). They then accurately determined the earnings from Day 2 muffins ($902.80 - $88.80 = $814) and finally the number of muffins baked on Day 2 ($814 / $3.70 = 220) (A1).",
-                            "student_exam_tip": "Break down multi-step problems into smaller, manageable calculations to maintain accuracy."
-                        },
-                        {
-                            "question_number": "13a",
-                            "marks_awarded": 1,
-                            "max_marks": 1,
-                            "topic_tag": "Geometry",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly applied the properties of a rhombus (CDEF is a rhombus, so CFE is an isosceles triangle with base angles 47\u00b0) to find \u2220CFE = 180\u00b0 - (47\u00b0 x 2) = 86\u00b0. This earns A1.",
-                            "student_exam_tip": "Always explicitly state the geometric properties used when solving angle problems."
-                        },
-                        {
-                            "question_number": "13b",
-                            "marks_awarded": 0,
-                            "max_marks": 2,
-                            "topic_tag": "Geometry",
-                            "is_fully_correct": false,
-                            "error_type": "Conceptual Error",
-                            "tutor_reasoning": "The student's derivation of \u2220BCF (171 - 94 = 77) and subsequent use of \u2220FBC = 67\u00b0 (unclear origin) led to \u2220BFC = 36\u00b0. While the calculation `180 - (77+67) = 36` is arithmetically correct based on these values, the values themselves for \u2220BCF and \u2220FBC do not align with the implied values in the marking scheme (\u2220BCF = 95\u00b0, \u2220BFC = 18\u00b0), thus no method marks can be awarded for this part.",
-                            "student_exam_tip": "Carefully re-check angle derivations using precise geometric properties and given values to ensure consistency with the problem's context."
-                        },
-                        {
-                            "question_number": "13c",
-                            "marks_awarded": 1,
-                            "max_marks": 1,
-                            "topic_tag": "Geometry",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly concluded that GFE 'is not' a straight line because the sum of angles GFB, BFC, and CFE 'is not' 180\u00b0. This logical conclusion is consistent with their calculated angle values (102 + 36 + 86 = 224\u00b0 \u2260 180\u00b0), aligning with the marking scheme's expected logical response (A1).",
-                            "student_exam_tip": "Ensure your conclusions are logically consistent with the values you have derived, even if those values might contain errors from previous parts."
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "class_summary": {
-                "class_id": "P3-MATH-B",
-                "total_students": 2,
-                "paper_total_marks": 55,
-                "class_average_percentage": 62,
-                "students_needing_attention": 2,
-                "performance_by_topic": {
-                    "Number Operations": 78,
-                    "Percentage": 79,
-                    "Ratio and Proportion": 81,
-                    "Units of Measurement": 22,
-                    "Problem Solving": 62,
-                    "Geometry": 60,
-                    "Number Patterns and Sequences": 70
-                }
-            },
-            "students": [
-                {
-                    "student_name": "Dylan_Chan",
-                    "class_id": "P6-MATH-B",
-                    "student_total_marks": 28,
-                    "paper_total_marks": 55,
-                    "overall_percentage": 51,
-                    "topic_scores": {
-                        "Number Operations": 57,
-                        "Percentage": 58,
-                        "Ratio and Proportion": 63,
-                        "Units of Measurement": 45,
-                        "Problem Solving": 61,
-                        "Geometry": 50,
-                        "Number Patterns and Sequences": 40
-                    },
-                    "detailed_grading": [
-                        {
-                            "question_number": "1a",
-                            "marks_awarded": 2,
-                            "max_marks": 2,
-                            "topic_tag": "Number Operations",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly converted the mixed fraction, divided by the portion size, and correctly interpreted the maximum whole number of cakes that can be baked. This aligns with Method 1 in the marking scheme.",
-                            "student_exam_tip": "Continue to show clear conversion and division steps for full clarity."
-                        },
-                        {
-                            "question_number": "1b",
-                            "marks_awarded": 0,
-                            "max_marks": 2,
-                            "topic_tag": "Units of Measurement",
-                            "is_fully_correct": false,
-                            "error_type": "Conceptual Error",
-                            "tutor_reasoning": "The student incorrectly calculated the amount of sugar left. The remainder of `4/5` from `20 4/5` cakes represents `4/5` of the portion size (`1/8 kg`), not `4/5 kg` of sugar. The correct remainder is `(4/5) * (1/8) kg = 1/10 kg = 100g`.",
-                            "student_exam_tip": "Carefully interpret the remainder in division problems, ensuring units and proportions are correctly applied."
-                        },
-                        {
-                            "question_number": "2",
-                            "marks_awarded": 2,
-                            "max_marks": 2,
-                            "topic_tag": "Percentage",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly calculated the discount amount and then expressed it as a percentage of the original price, aligning perfectly with Method 1 in the marking scheme.",
-                            "student_exam_tip": "Always ensure the percentage is calculated based on the correct base amount (original price)."
-                        },
-                        {
-                            "question_number": "3",
-                            "marks_awarded": 2,
-                            "max_marks": 2,
-                            "topic_tag": "Percentage",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly identified the values from the graph, calculated the increase, and expressed it as a percentage of the original amount (February's sales). This matches Method 1 in the marking scheme.",
-                            "student_exam_tip": "Ensure to clearly show the formula for percentage increase (change/original * 100%)."
-                        },
-                        {
-                            "question_number": "4",
-                            "marks_awarded": 0,
-                            "max_marks": 2,
-                            "topic_tag": "Ratio and Proportion",
-                            "is_fully_correct": false,
-                            "error_type": "Conceptual Error",
-                            "tutor_reasoning": "The student correctly identified the initial total volume of green paint from the base recipe (2.5L blue + 0.5L yellow = 3L green). However, they failed to correctly scale the blue paint amount for 4.5L of green paint, providing the original blue amount (2.5L) as the answer instead of scaling it proportionately.",
-                            "student_exam_tip": "When scaling recipes or proportions, ensure all components are scaled by the same factor relative to the desired total."
-                        },
-                        {
-                            "question_number": "5",
-                            "marks_awarded": 2,
-                            "max_marks": 2,
-                            "topic_tag": "Problem Solving",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly set up algebraic equations to represent the relationships between the prices of soft toys and keychains, solved for the price of a keychain, and then calculated the total money. This method aligns well with Method 2 in the marking scheme.",
-                            "student_exam_tip": "Translating word problems into clear algebraic equations is key to solving them efficiently and accurately."
-                        },
-                        {
-                            "question_number": "6",
-                            "marks_awarded": 1,
-                            "max_marks": 3,
-                            "topic_tag": "Percentage",
-                            "is_fully_correct": false,
-                            "error_type": "Conceptual Error",
-                            "tutor_reasoning": "The student correctly calculated the discount per set ($4.80) and the number of discounted boxes (5 sets). However, they stopped at 5 sets, implying 20 boxes, instead of identifying the largest possible number of boxes (23) that would still yield a total discount of $24. The marking scheme expects 22 boxes (though 23 is more logically correct for 'largest possible'). M1 awarded for correct calculation of discount amount and number of sets.",
-                            "student_exam_tip": "Always consider the full range of possibilities when a question asks for the 'largest possible number'."
-                        },
-                        {
-                            "question_number": "7",
-                            "marks_awarded": 2,
-                            "max_marks": 3,
-                            "topic_tag": "Problem Solving",
-                            "is_fully_correct": false,
-                            "error_type": "Calculation Error",
-                            "tutor_reasoning": "The student correctly set up the equation `2/7 * (F - 750) = 1/5 * F` and performed the algebraic manipulation to arrive at `3F = 7500`. However, a calculation error occurred in the final step, leading to an incorrect answer of `2625g` instead of `2500g`. Method marks (M2) are awarded for the correct conceptual setup and algebraic steps.",
-                            "student_exam_tip": "Double-check arithmetic, especially in the final steps of solving an equation, to avoid losing accuracy marks."
-                        },
-                        {
-                            "question_number": "8a",
-                            "marks_awarded": 2,
-                            "max_marks": 2,
-                            "topic_tag": "Ratio and Proportion",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly established the ratio A:B:C as 35:12:3 and then correctly calculated the fraction of beads in Box B relative to the total number of beads, simplifying it to 6/25. This matches the marking scheme.",
-                            "student_exam_tip": "Show clear steps in deriving ratios and simplifying fractions."
-                        },
-                        {
-                            "question_number": "8b",
-                            "marks_awarded": 0,
-                            "max_marks": 1,
-                            "topic_tag": "Ratio and Proportion",
-                            "is_fully_correct": false,
-                            "error_type": "Conceptual Error",
-                            "tutor_reasoning": "The student incorrectly divided the total number of beads (425) by 8 instead of the total number of ratio units (50). Subsequently, they multiplied by 5 instead of 12 for Box B, leading to an incorrect answer.",
-                            "student_exam_tip": "When working with ratios and total amounts, ensure you are dividing by the sum of all ratio units to find one unit, then multiplying by the correct unit count for the specific component."
-                        },
-                        {
-                            "question_number": "9",
-                            "marks_awarded": 4,
-                            "max_marks": 4,
-                            "topic_tag": "Units of Measurement",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student demonstrated a comprehensive understanding of volume calculations and conservation. They correctly calculated initial volumes, final volume in Tank A, the volume transferred, the new volume in Tank B, and finally the new height in Tank B. All steps are accurate and logical, fully deserving all method and accuracy marks.",
-                            "student_exam_tip": "For complex multi-step problems, clearly label intermediate calculations (e.g., initial volume, transferred volume) to maintain clarity and accuracy."
-                        },
-                        {
-                            "question_number": "10a",
-                            "marks_awarded": 0,
-                            "max_marks": 3,
-                            "topic_tag": "Percentage",
-                            "is_fully_correct": false,
-                            "error_type": "Calculation Error",
-                            "tutor_reasoning": "The student correctly identified that 65% of the money remained after the microwave purchase. However, the calculation for '55% of 65%' (the final percentage remaining) was incorrect, leading to `29.25%` instead of `35.75%`. This fundamental error meant no method marks could be awarded for calculating the initial amount.",
-                            "student_exam_tip": "When dealing with 'percentage of a percentage', ensure the calculations are performed precisely (e.g., 0.55 * 0.65) to avoid compounding errors."
-                        },
-                        {
-                            "question_number": "10b",
-                            "marks_awarded": 2,
-                            "max_marks": 2,
-                            "topic_tag": "Percentage",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly identified that the $243.10 represented 40% of the washing machine's original price (100% - 60% discount) and then accurately calculated the original price. This aligns perfectly with the marking scheme.",
-                            "student_exam_tip": "Clearly define what percentage a given value represents before calculating the total or original amount."
-                        },
-                        {
-                            "question_number": "11a",
-                            "marks_awarded": 1,
-                            "max_marks": 1,
-                            "topic_tag": "Number Operations",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly calculated the original price per muffin and then accurately determined the half price for a leftover muffin. The question is awarded 1 mark for the correct final answer.",
-                            "student_exam_tip": "Break down multi-step calculations into clear, logical steps."
-                        },
-                        {
-                            "question_number": "11b",
-                            "marks_awarded": 0,
-                            "max_marks": 2,
-                            "topic_tag": "Problem Solving",
-                            "is_fully_correct": false,
-                            "error_type": "Conceptual Error",
-                            "tutor_reasoning": "The student made a conceptual error by directly dividing the total amount earned on Day 2 ($902.80) by the original muffin price ($3.70). This overlooks the fact that leftover muffins from Day 1 were also sold on Day 2 at a discounted price, which needed to be accounted for first.",
-                            "student_exam_tip": "Read multi-part word problems carefully to identify all contributing factors and ensure they are integrated into the calculation."
-                        },
-                        {
-                            "question_number": "12a",
-                            "marks_awarded": 2,
-                            "max_marks": 2,
-                            "topic_tag": "Ratio and Proportion",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly scaled the ratios for Team A and Team B to ensure an equal total number of children in each team. They then accurately calculated the total number of boys and the total number of children across both teams, presenting the correct ratio. This aligns with the marking scheme.",
-                            "student_exam_tip": "When combining ratios with equal totals, find the Least Common Multiple (LCM) of the total units to easily scale."
-                        },
-                        {
-                            "question_number": "12b",
-                            "marks_awarded": 1,
-                            "max_marks": 1,
-                            "topic_tag": "Ratio and Proportion",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly used the derived ratio (21 boys for every 40 children) and the constraint (total boys fewer than 150) to find the largest possible multiplier (7). They then accurately calculated the largest possible number of children. This matches the marking scheme.",
-                            "student_exam_tip": "Clearly show the division and 'round down' step when finding the maximum unit value within a constraint."
-                        },
-                        {
-                            "question_number": "13a",
-                            "marks_awarded": 1,
-                            "max_marks": 1,
-                            "topic_tag": "Geometry",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly applied the property of an isosceles triangle (angles opposite equal sides are equal) and the sum of angles in a triangle to find \u2220CFE. The final answer is correct and deserves the mark.",
-                            "student_exam_tip": "Always state the geometric properties used in calculations (e.g., sum of angles in a triangle, isosceles triangle properties)."
-                        },
-                        {
-                            "question_number": "13b",
-                            "marks_awarded": 0,
-                            "max_marks": 2,
-                            "topic_tag": "Geometry",
-                            "is_fully_correct": false,
-                            "error_type": "Conceptual Error",
-                            "tutor_reasoning": "The student's working for this question is unclear and based on incorrect angle calculations (`102*2=204`). While the `78` might coincidentally match `\u2220GFB`, the overall method for finding `\u2220BFC` is not discernible or correct, leading to an incorrect final answer.",
-                            "student_exam_tip": "Ensure all angles used in calculations are correctly identified from the diagram and their properties are applied accurately."
-                        },
-                        {
-                            "question_number": "13c",
-                            "marks_awarded": 1,
-                            "max_marks": 1,
-                            "topic_tag": "Geometry",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly identified that GFE is not a straight line because the sum of the angles along it is not 180\u00b0. This conceptual understanding is correct and matches the marking scheme.",
-                            "student_exam_tip": "Remember that angles on a straight line sum to 180 degrees."
-                        },
-                        {
-                            "question_number": "14a",
-                            "marks_awarded": 1,
-                            "max_marks": 3,
-                            "topic_tag": "Units of Measurement",
-                            "is_fully_correct": false,
-                            "error_type": null,
-                            "tutor_reasoning": "The student provided the correct final answer of `512 cm^3`. However, no working steps were shown. According to the grading rules for Q6-17, if only the correct answer is given without working, only A1 is awarded (M0, A1).",
-                            "student_exam_tip": "Always show your working steps clearly, even for seemingly straightforward calculations, to earn method marks."
-                        },
-                        {
-                            "question_number": "14b",
-                            "marks_awarded": 0,
-                            "max_marks": 2,
-                            "topic_tag": "Problem Solving",
-                            "is_fully_correct": false,
-                            "error_type": null,
-                            "tutor_reasoning": "The question for 14b is not visible in the student's submission, and no answer or working was provided for this part. Thus, 0 marks awarded.",
-                            "student_exam_tip": "Ensure to attempt all parts of a question, even if you are unsure, by writing down any relevant formulas or initial steps."
-                        },
-                        {
-                            "question_number": "15a",
-                            "marks_awarded": 1,
-                            "max_marks": 1,
-                            "topic_tag": "Number Patterns and Sequences",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly identified all three values (i) 6, (ii) 30, and (iii) 36 by following the established patterns for white, grey, and total coloured papers. This aligns with the marking scheme.",
-                            "student_exam_tip": "Clearly state the pattern rule you are following for each sequence."
-                        },
-                        {
-                            "question_number": "15b",
-                            "marks_awarded": 0,
-                            "max_marks": 1,
-                            "topic_tag": "Number Patterns and Sequences",
-                            "is_fully_correct": false,
-                            "error_type": "Conceptual Error",
-                            "tutor_reasoning": "The student incorrectly answered `182`. The question asks for the 'total number of coloured paper' for Figure 14, which follows the `n^2` pattern (`14^2 = 196`). The student appears to have calculated the number of grey papers (`14 * (14-1) = 182`) instead.",
-                            "student_exam_tip": "Carefully distinguish between different patterns in a sequence problem (e.g., total vs. specific types of papers)."
-                        },
-                        {
-                            "question_number": "15c",
-                            "marks_awarded": 1,
-                            "max_marks": 1,
-                            "topic_tag": "Number Patterns and Sequences",
-                            "is_fully_correct": true,
-                            "error_type": null,
-                            "tutor_reasoning": "The student correctly identified the pattern for grey coloured papers (`n * (n-1)`) and used estimation (`sqrt(462)`) to narrow down the figure number. They then verified that `22 * 21 = 462`, providing the correct figure number. This aligns with the marking scheme.",
-                            "student_exam_tip": "Estimation is a good strategy to quickly narrow down possible solutions in pattern problems."
-                        },
-                        {
-                            "question_number": "15d",
-                            "marks_awarded": 0,
-                            "max_marks": 2,
-                            "topic_tag": "Number Patterns and Sequences",
-                            "is_fully_correct": false,
-                            "error_type": null,
-                            "tutor_reasoning": "The question for 15d is not visible in the student's submission, and no answer or working was provided for this part. Thus, 0 marks awarded.",
-                            "student_exam_tip": "Ensure to attempt all parts of a question, even if you are unsure, by writing down any relevant formulas or initial steps."
-                        }
-                    ]
-                },
                 {
                     "student_name": "Celine",
-                    "class_id": "P3-MATH-B",
-                    "student_total_marks": 40,
+                    "class_id": "P3-MATH-E",
+                    "student_total_marks": 35,
                     "paper_total_marks": 55,
-                    "overall_percentage": 73,
+                    "overall_percentage": 63,
                     "topic_scores": {
-                        "Number Operations": 100,
-                        "Percentage": 100,
+                        "Fractions and Decimals": 71,
+                        "Percentages": 100,
                         "Ratio and Proportion": 100,
-                        "Units of Measurement": 0,
-                        "Problem Solving": 63,
-                        "Geometry": 71,
-                        "Number Patterns and Sequences": 100
+                        "Measurement": 33,
+                        "Money": 67,
+                        "Geometry": 50,
+                        "Number Patterns and Sequences": 100,
+                        "Algebra": null
                     },
                     "detailed_grading": [
                         {
                             "question_number": "1a",
                             "marks_awarded": 2,
                             "max_marks": 2,
-                            "topic_tag": "Number Operations",
+                            "topic_tag": "Fractions and Decimals",
                             "is_fully_correct": true,
                             "error_type": null,
-                            "tutor_reasoning": "Student correctly converted mixed fraction to improper fraction, performed division, and correctly identified the maximum whole number of cakes that could be baked. This aligns with the A2 mark for a correct answer with method as per the marking scheme.",
-                            "student_exam_tip": "Always simplify fractions before performing multiplication or division for easier calculation."
+                            "tutor_reasoning": "The student correctly converted the mixed number to an improper fraction, performed the division, and correctly identified the maximum whole number of cakes that could be baked. This aligns with Method 1 in the marking scheme, awarding full marks (A2 as per Q1-5 rule a).",
+                            "student_exam_tip": "Excellent work! Ensure to clearly state the final answer if it requires rounding or extracting a whole number from a mixed fraction."
                         },
                         {
                             "question_number": "1b",
                             "marks_awarded": 0,
                             "max_marks": 2,
-                            "topic_tag": "Units of Measurement",
+                            "topic_tag": "Fractions and Decimals",
                             "is_fully_correct": false,
-                            "error_type": "Calculation Error",
-                            "tutor_reasoning": "The student correctly calculated the amount of sugar left as 0.1 kg (implicitly 1/10 kg from 1a calculation, then converted to 100g and back to 0.1kg). However, the question explicitly asked to express the answer in grams. Since the final answer is provided in kilograms instead of grams, and the marking scheme awards A1 for '100g', marks are denied for incorrect units.",
-                            "student_exam_tip": "Always double-check the required units for the final answer and ensure all conversions are clearly shown."
+                            "error_type": "Conceptual Error",
+                            "tutor_reasoning": "The question asks for the amount of sugar left after baking the maximum number of cakes (20 cakes). Initial sugar was 2 3/5 kg, and 20 cakes used 20 * 1/8 kg = 2.5 kg. So, 2.6 kg - 2.5 kg = 0.1 kg = 100g. The student's working of '4/5 x 1000 = 100' for converting a fraction of a kg to grams is arithmetically incorrect (4/5 kg = 800g), and the conceptual basis for '4/5 - 1/8' as remaining sugar is also incorrect. As per rule 'd' for Q1-5, if the method is incorrect but the answer is correct (which is not the case here, as 0.1kg is correct but derived incorrectly), M0 A0 is awarded. Since the method is incorrect, no marks are awarded.",
+                            "student_exam_tip": "Always re-read the question carefully to ensure your calculations address what is being asked (e.g., 'sugar left' after all cakes, not after one cake). Double-check unit conversions and fraction arithmetic."
                         },
                         {
                             "question_number": "2",
                             "marks_awarded": 2,
                             "max_marks": 2,
-                            "topic_tag": "Percentage",
+                            "topic_tag": "Percentages",
                             "is_fully_correct": true,
                             "error_type": null,
-                            "tutor_reasoning": "The student's method of calculating the percentage of the original price first, and then subtracting from 100% to find the discount percentage, is a valid and correct approach. All calculations are accurate and lead to the correct final answer of 18%. Marks awarded M1 for method and A1 for answer.",
-                            "student_exam_tip": "Clearly show all steps when calculating percentages to ensure method marks are awarded."
+                            "tutor_reasoning": "The student correctly calculated the percentage of the original price that was paid and then subtracted it from 100% to find the percentage discount. This matches Method 2 of the marking scheme, awarding full marks (M1A1).",
+                            "student_exam_tip": "Clear and accurate. Continue to show your steps clearly."
                         },
                         {
                             "question_number": "3",
                             "marks_awarded": 2,
                             "max_marks": 2,
-                            "topic_tag": "Percentage",
+                            "topic_tag": "Percentages",
                             "is_fully_correct": true,
                             "error_type": null,
-                            "tutor_reasoning": "The student correctly calculated the increase in sales and then found the percentage increase relative to the original amount. The rounding to one decimal place is also accurate as per the question's requirement. Marks awarded M1 for method and A1 for answer.",
-                            "student_exam_tip": "Remember to divide by the original amount, not the new amount, when calculating percentage increase."
+                            "tutor_reasoning": "The student correctly identified the number of bottles sold in February and March, calculated the increase, and expressed it as a percentage increase from February to March, rounded to one decimal place. This matches Method 1 of the marking scheme, awarding full marks (M1A1).",
+                            "student_exam_tip": "Excellent precision with rounding. Maintain this accuracy."
                         },
                         {
                             "question_number": "4",
@@ -845,38 +83,38 @@
                             "topic_tag": "Ratio and Proportion",
                             "is_fully_correct": true,
                             "error_type": null,
-                            "tutor_reasoning": "The student correctly converted 500ml to 0.5l, determined the total volume of green paint from the base recipe (2.5l + 0.5l = 3l), and then used proportional reasoning to find the amount of blue paint needed for 4.5l of green paint (1.5 * 2.5l = 3.75l). This method is sound and leads to the correct answer. Marks awarded M1 for method and A1 for answer.",
-                            "student_exam_tip": "For problems involving different units, ensure consistency by converting all values to a single unit early in the calculation."
+                            "tutor_reasoning": "The student correctly converted 500ml to 0.5L, established the total volume of green paint from the ratio, found the scaling factor to reach 4.5L of green paint, and applied it to the blue paint volume. This is a correct proportional reasoning approach, awarding full marks (M1A1).",
+                            "student_exam_tip": "Good unit consistency and proportional scaling. Keep up the good work."
                         },
                         {
                             "question_number": "5",
                             "marks_awarded": 2,
                             "max_marks": 2,
-                            "topic_tag": "Problem Solving",
+                            "topic_tag": "Money",
                             "is_fully_correct": true,
                             "error_type": null,
-                            "tutor_reasoning": "The student correctly deduced that the price difference for 2 soft toys (compared to 2 keychains) represents the cost of 3 keychains (since 2 soft toys = 5 keychains in value). By finding the cost of one keychain ($67.20 / 3 = $22.40), and then multiplying by 5 (for 5 keychains), the student arrived at the correct total amount of money. Marks awarded M1 for method and A1 for answer.",
-                            "student_exam_tip": "When comparing quantities with different units of exchange (e.g., soft toys vs. keychains), try to find the value of a common unit or the difference in terms of that unit."
+                            "tutor_reasoning": "The student correctly set up the relationship between soft toys and keychains, used the price difference to find the cost of one keychain, and then calculated the total money needed for 5 keychains. This is a sound algebraic approach, awarding full marks (M1A1).",
+                            "student_exam_tip": "Your algebraic setup is efficient and accurate. Continue to apply these methods."
                         },
                         {
                             "question_number": "6",
-                            "marks_awarded": 2,
+                            "marks_awarded": 1,
                             "max_marks": 3,
-                            "topic_tag": "Problem Solving",
+                            "topic_tag": "Money",
                             "is_fully_correct": false,
                             "error_type": "Calculation Error",
-                            "tutor_reasoning": "The student correctly calculated the discount amount per set ($4.80) and the number of sets that yielded the total discount of $24 (5 sets). This earned M1 for each step. However, the final step to find the largest possible number of blind boxes resulted in 23, while the marking scheme indicates 22. Given the wording 'largest possible number' and a total discount of exactly $24, buying 5 sets (20 boxes) plus 3 additional full-price boxes would still yield a total discount of $24 (23 boxes total). If a 6th set was purchased, the discount would exceed $24. So, 23 would seem correct based on this interpretation. However, adhering strictly to the provided marking scheme which gives M1 A1 for '22', the student's final answer '23' is marked A0.",
-                            "student_exam_tip": "In 'largest possible' questions, consider all marginal cases. Sometimes, additional purchases without discount might still fall within the overall constraint."
+                            "tutor_reasoning": "The student correctly calculated the discount per set of 4 boxes ($16 - $11.20 = $4.80) and determined that Ravi bought 5 sets of 4 boxes (20 boxes) to get a $24 discount ($24 / $4.80 = 5). This would typically warrant a method mark. However, the final answer for the 'largest possible number' of boxes in the marking scheme is 22, while the student calculated 23 by adding 3 additional boxes. While conceptually 'largest possible' might imply adding non-discounted boxes up to just before the next discount threshold, the marking scheme's final answer is 22. Adhering strictly to the marking scheme, marks are awarded for the correct intermediate steps but not for the final answer. (M1A0).",
+                            "student_exam_tip": "Pay close attention to the definition of a 'set' and how additional items beyond full sets contribute to the 'largest possible number' given a fixed total discount. Cross-reference with the example given in similar problems."
                         },
                         {
                             "question_number": "7",
                             "marks_awarded": 3,
                             "max_marks": 3,
-                            "topic_tag": "Problem Solving",
+                            "topic_tag": "Fractions and Decimals",
                             "is_fully_correct": true,
                             "error_type": null,
-                            "tutor_reasoning": "The student's method, although appearing slightly convoluted in initial lines, correctly identifies that 750g of flour represents 3/10 of the total flour. This is equivalent to the '3u = 750' step in the marking scheme (M1). Subsequently, the calculation to find the total flour (750 / 3 * 10 = 2500g) is accurate. Marks awarded M1 for the key relationship and A1 for the final answer.",
-                            "student_exam_tip": "For problems involving fractions of remaining quantities, using a unit approach or working backwards can simplify the steps and prevent common errors."
+                            "tutor_reasoning": "The student correctly used proportional reasoning or a unit method by determining that the 750g used for the cake represented 3/10 of the total flour (derived from 1/5 total left and 2/7 of remainder before cookies). This allowed for accurate calculation of 1/10 and subsequently the total flour. This matches the marking scheme's underlying logic, awarding full marks (M1M1A1).",
+                            "student_exam_tip": "Your unit method for solving multi-step fraction problems is very effective. Continue to break down the problem into identifiable parts of the whole."
                         },
                         {
                             "question_number": "8a",
@@ -885,8 +123,8 @@
                             "topic_tag": "Ratio and Proportion",
                             "is_fully_correct": true,
                             "error_type": null,
-                            "tutor_reasoning": "The student correctly established the ratios A:B as 35:12 and B:C as 4:1 (or 12:3 after scaling). By combining these, the overall ratio A:B:C = 35:12:3 was correctly derived. The fraction of beads in Box B relative to the total was then accurately calculated and simplified to 6/25. Marks awarded M1 for ratio method and A1 for answer.",
-                            "student_exam_tip": "When combining multiple ratios, ensure the common term (e.g., B in A:B and B:C) is represented by the same value or unit across all ratios."
+                            "tutor_reasoning": "The student correctly established the ratios A:B and B:C, found a common multiplier for B to combine the ratios into A:B:C = 35:12:3, and then correctly expressed the fraction of beads in Box B as 12/50, simplified to 6/25. This matches the marking scheme, awarding full marks (M1A1).",
+                            "student_exam_tip": "Excellent work in combining ratios and simplifying fractions. Maintain this precision."
                         },
                         {
                             "question_number": "8b",
@@ -895,58 +133,58 @@
                             "topic_tag": "Ratio and Proportion",
                             "is_fully_correct": true,
                             "error_type": null,
-                            "tutor_reasoning": "Using the total units from 8a (50 units) and the total number of beads (425), the student correctly found the value of one unit (8.5). Then, multiplying this by the 12 units for Box B (12 * 8.5 = 102) yielded the correct answer. Mark awarded A1.",
-                            "student_exam_tip": "After establishing ratios, apply the total known quantity to find the value of one unit, then scale as needed."
+                            "tutor_reasoning": "Building on the correct ratio from 8a, the student correctly calculated the value of one unit (425 / 50 = 8.5) and then found the number of beads in Box B (12 * 8.5 = 102). This matches the marking scheme, awarding full marks (A1).",
+                            "student_exam_tip": "Good follow-through from the previous part. Consistent application of unit method."
                         },
                         {
                             "question_number": "9",
-                            "marks_awarded": 1,
+                            "marks_awarded": 0,
                             "max_marks": 4,
-                            "topic_tag": "Problem Solving",
+                            "topic_tag": "Measurement",
                             "is_fully_correct": false,
                             "error_type": "Conceptual Error",
-                            "tutor_reasoning": "The student correctly identified the increase in water level in Tank A (25.5 - 12 = 13.5 cm), earning M1. However, the subsequent steps to calculate the volume of water transferred and its effect on Tank B are incorrect or missing. The calculation '75 / 12 = 6.25' is conceptually flawed, and the rest of the steps derive from this error, leading to an incorrect final answer.",
-                            "student_exam_tip": "Break down complex problems into smaller, logical steps. For volume transfer, calculate the volume transferred first, then use that volume to find the change in height in the other tank."
+                            "tutor_reasoning": "The student made a fundamental conceptual error in calculating the transferred volume or water levels (`75/12 = 6.25` is not a valid step in this context) which led to an incorrect final answer. The method deviates significantly from the correct approach involving volume calculations. No marks are awarded (M0A0).",
+                            "student_exam_tip": "When dealing with connected tanks, remember that the volume of water transferred is key. Calculate initial volumes, new volumes, and the difference, then use the dimensions to find new heights. Avoid arbitrary divisions or additions."
                         },
                         {
                             "question_number": "10a",
                             "marks_awarded": 3,
                             "max_marks": 3,
-                            "topic_tag": "Percentage",
+                            "topic_tag": "Percentages",
                             "is_fully_correct": true,
                             "error_type": null,
-                            "tutor_reasoning": "The student accurately determined the percentage of money remaining after the first purchase (65%) and then the percentage of that remainder left after the second purchase (55% of 65% = 35.75%). By equating this percentage to the given amount ($243.10), the student correctly calculated 1% and then the initial 100% of money. Marks awarded M1 for percentage remaining (35.75%), M1 for 1% value, and A1 for final answer.",
-                            "student_exam_tip": "When dealing with 'percentage of the remainder', multiply the remaining percentages together to find the final percentage of the original amount."
+                            "tutor_reasoning": "The student correctly calculated the percentage of total money remaining after both expenditures (55% of 65% = 35.75%) and then used this percentage to find the original total amount of money. This matches Method 2 of the marking scheme, awarding full marks (M1M1A1).",
+                            "student_exam_tip": "Your understanding of 'percentage of remainder' is strong. Maintain clarity in your calculations."
                         },
                         {
                             "question_number": "10b",
                             "marks_awarded": 2,
                             "max_marks": 2,
-                            "topic_tag": "Percentage",
+                            "topic_tag": "Percentages",
                             "is_fully_correct": true,
                             "error_type": null,
-                            "tutor_reasoning": "The student correctly identified that a 60% discount means the item was sold at 40% of its original price. By equating the amount paid ($243.10) to 40%, the student accurately calculated 1% and subsequently the original price (100%). Marks awarded M1 for 1% value and A1 for final answer.",
-                            "student_exam_tip": "A discount of X% means you pay (100-X)% of the original price."
+                            "tutor_reasoning": "The student correctly identified that the amount left ($243.10) represented 40% of the original price of the washing machine (100% - 60% discount). They then accurately calculated the original price. This matches Method 1 of the marking scheme, awarding full marks (M1A1).",
+                            "student_exam_tip": "Another accurate calculation demonstrating a good grasp of percentage discounts. Keep practicing these types of problems."
                         },
                         {
                             "question_number": "11a",
                             "marks_awarded": 1,
                             "max_marks": 1,
-                            "topic_tag": "Number Operations",
+                            "topic_tag": "Money",
                             "is_fully_correct": true,
                             "error_type": null,
-                            "tutor_reasoning": "The student correctly calculated the original price per muffin by dividing total earnings by the number sold ($377.40 / 102 = $3.70). Then, the half price was accurately determined ($3.70 / 2 = $1.85). Mark awarded A1 for the correct answer.",
-                            "student_exam_tip": "Read carefully for keywords like 'half price' to ensure correct calculations."
+                            "tutor_reasoning": "The student correctly calculated the original cost of one loaf and then the discounted half price. This matches the marking scheme, awarding full marks (A1).",
+                            "student_exam_tip": "Clear and accurate. Continue to show your steps clearly."
                         },
                         {
                             "question_number": "11b",
                             "marks_awarded": 2,
                             "max_marks": 2,
-                            "topic_tag": "Problem Solving",
+                            "topic_tag": "Money",
                             "is_fully_correct": true,
                             "error_type": null,
-                            "tutor_reasoning": "The student correctly calculated the revenue from leftover muffins sold at half price ($1.85 * 48 = $88.80). This was then subtracted from the total Day 2 earnings ($902.80 - $88.80 = $814) to find the revenue from muffins baked on Day 2. Finally, dividing this by the original price per muffin ($814 / $3.70 = 220) yielded the correct number of muffins baked on Day 2. Marks awarded M1 for intermediate calculations (e.g., $814) and A1 for the final answer.",
-                            "student_exam_tip": "Organize multi-step problems by calculating revenue from different sources separately before combining them."
+                            "tutor_reasoning": "The student correctly calculated the earnings from leftover muffins, subtracted this from the total Day 2 earnings to find earnings from newly baked muffins, and then divided by the original price to find the number of newly baked muffins. This matches the marking scheme, awarding full marks (M1A1).",
+                            "student_exam_tip": "Excellent logical breakdown of the problem into manageable steps. Your calculations are precise."
                         },
                         {
                             "question_number": "12a",
@@ -955,8 +193,8 @@
                             "topic_tag": "Ratio and Proportion",
                             "is_fully_correct": true,
                             "error_type": null,
-                            "tutor_reasoning": "The student correctly scaled the ratios for Team A (16:4:20) and Team B (5:15:20) to ensure both teams had an equal total number of children (20 units). By summing the boys' units (16+5=21) and the total children's units (20+20=40), the correct ratio of 21:40 was obtained. Marks awarded M1 for scaling ratios and A1 for the final answer.",
-                            "student_exam_tip": "When ratios from different groups need to be compared or combined based on a common quantity (e.g., total children), first make that common quantity equal in the ratio representation."
+                            "tutor_reasoning": "The student correctly scaled the individual team ratios to a common 'total children' unit, then combined the boys' numbers and total children to form the final ratio. This matches the marking scheme, awarding full marks (M1A1).",
+                            "student_exam_tip": "Your method for equalizing the total units across different ratios is very effective. Continue to apply this technique."
                         },
                         {
                             "question_number": "12b",
@@ -965,8 +203,8 @@
                             "topic_tag": "Ratio and Proportion",
                             "is_fully_correct": true,
                             "error_type": null,
-                            "tutor_reasoning": "Based on the ratio from 12a (21 units for boys), the student correctly determined that the largest integer unit value, given that boys are fewer than 150 (21u < 150), is u=7. This was then applied to the total children's units (40u) to find the largest possible number of children (40 * 7 = 280). Mark awarded A1 for the correct answer.",
-                            "student_exam_tip": "When applying constraints like 'fewer than' to ratio units, find the largest integer value for the unit to maximize the required quantity."
+                            "tutor_reasoning": "Using the combined ratio from 12a, the student correctly identified the largest multiple of 'boys units' (21 units) that was less than 150 (147 = 21 * 7) and then scaled the total children (40 units) by the same factor (40 * 7 = 280). This matches the marking scheme, awarding full marks (A1).",
+                            "student_exam_tip": "Good application of ratio scaling based on a limiting factor. Ensure to clearly state the factor (e.g., 'x 7')."
                         },
                         {
                             "question_number": "13a",
@@ -975,8 +213,8 @@
                             "topic_tag": "Geometry",
                             "is_fully_correct": true,
                             "error_type": null,
-                            "tutor_reasoning": "Following the marking scheme's interpretation that \u2220FEC and \u2220FCE are both 47\u00b0, the student correctly calculated \u2220CFE as 180\u00b0 - 47\u00b0 - 47\u00b0 = 86\u00b0. Mark awarded A1.",
-                            "student_exam_tip": "Be careful with angle notations in diagrams; sometimes angles are implied based on common geometric shapes (e.g., isosceles triangles)."
+                            "tutor_reasoning": "The student correctly used the property of angles in an isosceles triangle (angles opposite equal sides are equal) and the sum of angles in a triangle (180 degrees) to find angle CFE. This matches the marking scheme, awarding full marks (A1).",
+                            "student_exam_tip": "Your understanding of triangle properties is clear. Labeling your geometric theorems (e.g., 'sum of angles in a triangle') can further enhance clarity."
                         },
                         {
                             "question_number": "13b",
@@ -985,8 +223,8 @@
                             "topic_tag": "Geometry",
                             "is_fully_correct": false,
                             "error_type": "Conceptual Error",
-                            "tutor_reasoning": "The student's calculation for \u2220BCF (360 - 171 - 86 = 103) does not align with the marking scheme's derived value of 95\u00b0. This suggests a conceptual misunderstanding of how the angles relate or are distributed around point C, especially concerning the properties of the rhombus and the given 171\u00b0 angle. As the initial step to find \u2220BCF is incorrect, the subsequent calculation for \u2220BFC is also incorrect. Marks are denied for both method (M1 for \u2220BCF) and accuracy (A1 for \u2220BFC).",
-                            "student_exam_tip": "Always list known angles and geometric properties for each shape (parallelogram, rhombus) to accurately determine unknown angles. Cross-reference values carefully."
+                            "tutor_reasoning": "The student's calculations for angle BCF and subsequent angle BFC are based on an incorrect interpretation of angles within the figure. The steps '360 - 171 - 86 - 47' for angle BCF and the resulting calculation are not logically sound given geometric properties of the shapes. No marks are awarded (M0A0).",
+                            "student_exam_tip": "Review the properties of parallelograms and rhombuses, and how angles at a point or on a straight line interact. Break down complex angles into simpler components."
                         },
                         {
                             "question_number": "13c",
@@ -995,28 +233,28 @@
                             "topic_tag": "Geometry",
                             "is_fully_correct": true,
                             "error_type": null,
-                            "tutor_reasoning": "The student correctly identified that GFE is not a straight line because the sum of the specified angles (GFB, BFC, CFE) is not 180\u00b0. Mark awarded A1 for both correct selections.",
-                            "student_exam_tip": "A straight line forms a 180-degree angle. If multiple angles along a line segment do not sum to 180 degrees, the line is not straight."
+                            "tutor_reasoning": "Despite a computational error in 13b affecting the sum, the student correctly stated the condition for a straight line (sum of angles = 180 degrees) and concluded that GFE is not a straight line because the sum (calculated based on their previous answers) is not 180. As per rule 'c' for Q6-17, follow-through marks are awarded for the correct conclusion based on previous (incorrect) values. The conceptual statement is correct (A1).",
+                            "student_exam_tip": "Always remember the core geometric principles, even if intermediate calculations lead to different numerical results. Your conceptual understanding is strong."
                         },
                         {
                             "question_number": "14a",
                             "marks_awarded": 3,
                             "max_marks": 3,
-                            "topic_tag": "Geometry",
+                            "topic_tag": "Measurement",
                             "is_fully_correct": true,
                             "error_type": null,
-                            "tutor_reasoning": "The student correctly counted the number of painted faces (34), earning M1. They then correctly derived the area of one face from the total painted area (544 / 34 = 16 cm\u00b2), and subsequently the edge length of one cube (\u221a16 = 4 cm), earning M1. Finally, the volume of 8 cubes was accurately calculated (4\u00b3 * 8 = 512 cm\u00b3), earning A1.",
-                            "student_exam_tip": "When calculating surface area of solids made from cubes, carefully count all exposed faces, including the base if painted."
+                            "tutor_reasoning": "Given the total painted surface area and the number of painted faces, the student correctly found the area of one face, the edge length of one cube, and subsequently the volume of one cube. Multiplying by 8 (for 8 identical cubes) yielded the total volume of Solid W. This matches the marking scheme, awarding full marks (M1A1).",
+                            "student_exam_tip": "You effectively used the given information to derive the necessary cube properties. The initial irrelevant counting (8+8+10=34) did not affect the subsequent correct steps, but it's good practice to focus only on relevant given information."
                         },
                         {
                             "question_number": "14b",
                             "marks_awarded": 0,
                             "max_marks": 2,
-                            "topic_tag": "Problem Solving",
+                            "topic_tag": "Measurement",
                             "is_fully_correct": false,
                             "error_type": "Conceptual Error",
-                            "tutor_reasoning": "The student correctly identified that the problem involves a percentage difference related to the tank's volume. However, the step '2 * 64 = 128' is incorrect as the difference in cubes between Solid X (12 cubes) and Solid W (8 cubes) is 4 cubes, not 2 cubes. Thus, 8% of the tank's volume should correspond to 4 * 64 = 256 cm\u00b3, not 128 cm\u00b3. This conceptual error leads to an incorrect calculation for the tank's capacity. Marks are denied for both method (M1) and accuracy (A1).",
-                            "student_exam_tip": "Clearly define the quantities and their relationships. Double-check differences or sums of components before assigning percentages or ratios."
+                            "tutor_reasoning": "The question implies that the difference in volume between Solid X (12 cubes) and Solid W (8 cubes), which is 4 cubes (4 * 64 cm^3 = 256 cm^3), represents 8% of the tank's volume. Therefore, the tank's volume is 256 / 0.08 = 3200 cm^3. The student's initial step of '2 x 64 = 128' for 8% is incorrect and deviates from the correct conceptual understanding that 8% refers to the *difference* in volume, which is 4 cubes. No marks are awarded (M0A0).",
+                            "student_exam_tip": "Carefully interpret percentages in word problems. '8% more of the tank's volume' when comparing two solids usually refers to the percentage of the tank that the *difference* in solid volumes represents."
                         },
                         {
                             "question_number": "15a",
@@ -1025,8 +263,8 @@
                             "topic_tag": "Number Patterns and Sequences",
                             "is_fully_correct": true,
                             "error_type": null,
-                            "tutor_reasoning": "The student correctly identified all the missing values in the table for Figure 6: 6 white papers, 30 grey papers, and a total of 36 coloured papers. Mark awarded A1 for all correct.",
-                            "student_exam_tip": "Carefully observe the pattern for each column (white, grey, total) to accurately predict future values."
+                            "tutor_reasoning": "The student correctly identified the patterns for white, grey, and total coloured papers, and accurately filled in all three values for Figure 6. This matches the marking scheme, awarding full marks (A1).",
+                            "student_exam_tip": "Excellent pattern recognition skills. Ensure all parts of a table completion question are addressed fully."
                         },
                         {
                             "question_number": "15b",
@@ -1035,8 +273,8 @@
                             "topic_tag": "Number Patterns and Sequences",
                             "is_fully_correct": true,
                             "error_type": null,
-                            "tutor_reasoning": "The student correctly identified that the total number of coloured papers for Figure 'n' is n*n. For Figure 14, this is 14*14 = 196. Mark awarded A1 for the correct answer.",
-                            "student_exam_tip": "Identify the mathematical rule or formula that governs the pattern to quickly calculate values for larger figure numbers."
+                            "tutor_reasoning": "The student correctly applied the pattern (Total papers for Figure N = N^2) to find the total for Figure 14. This matches the marking scheme, awarding full marks (A1).",
+                            "student_exam_tip": "Keep identifying and applying the pattern rules effectively. Good work."
                         },
                         {
                             "question_number": "15c",
@@ -1045,8 +283,8 @@
                             "topic_tag": "Number Patterns and Sequences",
                             "is_fully_correct": true,
                             "error_type": null,
-                            "tutor_reasoning": "The student correctly determined that if the number of grey coloured papers is n*(n-1), and this value is 462, then n=22. Since the number of white coloured papers for Figure 'n' is 'n', the answer is 22. Mark awarded A1 for the correct answer.",
-                            "student_exam_tip": "Understand how different components (white, grey, total) of the figure relate to the figure number 'n'."
+                            "tutor_reasoning": "The student correctly identified the pattern for grey coloured papers (N * (N-1)) and solved for N given 462 grey papers. Then, they correctly found the number of white papers for that figure (N). This matches the marking scheme, awarding full marks (A1).",
+                            "student_exam_tip": "Your ability to solve for N in sequence problems is strong. Ensure to state which figure number N corresponds to when finding the answer for white papers."
                         },
                         {
                             "question_number": "15d",
@@ -1055,8 +293,8 @@
                             "topic_tag": "Number Patterns and Sequences",
                             "is_fully_correct": true,
                             "error_type": null,
-                            "tutor_reasoning": "The student correctly identified the ending number for Figure 10 (55) and Figure 11 (66). This correctly showed that the numbers in Figure 11 range from 56 to 66. Since '60' falls within this range, Figure 11 is the relevant figure, and its smallest number in the diagonal (starting number) is 56. Marks awarded M1 for determining the correct figure range and A1 for the final answer.",
-                            "student_exam_tip": "When finding a specific number in a sequence of figures, use the formula for the 'ending number' to efficiently determine which figure contains that number."
+                            "tutor_reasoning": "The student correctly extended the pattern for the 'Starting Number' and 'Ending Number' in the diagonal to Figure 11, where the number 60 would be located. They correctly identified the smallest number in the diagonal of Figure 11 as 56. This matches the marking scheme's Method 1 (listing) and Method 2 (summation), awarding full marks (M1A1).",
+                            "student_exam_tip": "Excellent work in extending patterns and identifying the range within a sequence. Both the table and summation methods were correct."
                         }
                     ]
                 }

@@ -1,35 +1,33 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Users, TrendingUp, AlertTriangle } from 'lucide-react';
 import StatCard from '@/components/ui/StatCard';
+import { getResults } from '@/lib/api';
+import type { DatabaseFeed } from '@/types/database';
 
-const classes = [
-  {
-    id: 'p5-math-a',
-    name: 'P5-Math-A',
-    subject: 'Mathematics',
-    level: 'Primary 5',
-    students: 10,
-    avgScore: 84,
-    quality: 'Good',
-    qualityColor: 'bg-green-100 text-green-700',
-    needAttention: 1,
-  },
-  {
-    id: 'p5-math-b',
-    name: 'P5-Math-B',
-    subject: 'Mathematics',
-    level: 'Primary 5',
-    students: 10,
-    avgScore: 91,
-    quality: 'Good',
-    qualityColor: 'bg-green-100 text-green-700',
-    needAttention: 0,
-  },
-];
+function avgColor(score: number) {
+  if (score >= 75) return { badge: 'bg-green-100 text-green-700', label: 'Good' };
+  if (score >= 50) return { badge: 'bg-orange-100 text-orange-700', label: 'Average' };
+  return { badge: 'bg-red-100 text-red-700', label: 'Needs Work' };
+}
 
 export default function TutorAnalyticsPage() {
+  const [feed, setFeed] = useState<DatabaseFeed | null>(null);
+
+  useEffect(() => {
+    getResults().then(setFeed).catch(() => null);
+  }, []);
+
+  const totalClasses = feed?.all_classes.length ?? 0;
+  const totalStudents = feed?.all_classes.reduce(
+    (sum, c) => sum + c.class_summary.total_students, 0
+  ) ?? 0;
+  const totalNeedAttention = feed?.all_classes.reduce(
+    (sum, c) => sum + c.class_summary.students_needing_attention, 0
+  ) ?? 0;
+
   return (
     <>
       {/* Header */}
@@ -42,19 +40,19 @@ export default function TutorAnalyticsPage() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
         <StatCard
           title="Total Classes"
-          value={2}
+          value={totalClasses}
           subtitle="Active classes"
           icon={<TrendingUp size={20} />}
         />
         <StatCard
           title="Total Students"
-          value={20}
+          value={totalStudents}
           subtitle="Across all classes"
           icon={<Users size={20} />}
         />
         <StatCard
           title="Students Need Attention"
-          value={1}
+          value={totalNeedAttention}
           subtitle="Below 75% confidence"
           icon={<AlertTriangle size={20} />}
         />
@@ -62,57 +60,69 @@ export default function TutorAnalyticsPage() {
 
       {/* Your Classes */}
       <h2 className="text-base font-bold text-gray-900 mb-4">Your Classes</h2>
-      <div className="flex flex-col gap-4">
-        {classes.map((c) => (
-          <div key={c.id} className="bg-white rounded-xl border border-gray-100 p-6 shadow-sm">
-            <div className="flex items-center justify-between">
 
-              {/* Left: name + badges */}
-              <div className="flex flex-col gap-3">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="font-bold text-gray-900">{c.name}</span>
-                  <span className="text-xs px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 font-semibold">
-                    {c.subject}
-                  </span>
-                  <span className="text-xs px-2.5 py-0.5 rounded-full bg-zinc-100 text-zinc-500 font-medium">
-                    {c.level}
-                  </span>
-                </div>
+      {!feed ? (
+        <p className="text-sm text-gray-400">Loading class data…</p>
+      ) : feed.all_classes.length === 0 ? (
+        <p className="text-sm text-gray-400">No graded classes yet. Upload worksheets in the Auto Grader to get started.</p>
+      ) : (
+        <div className="flex flex-col gap-4">
+          {feed.all_classes.map((cls) => {
+            const { class_id, class_average_percentage, students_needing_attention, total_students } =
+              cls.class_summary;
+            const { badge, label } = avgColor(class_average_percentage);
+            return (
+              <div key={class_id} className="bg-white rounded-xl border border-gray-100 p-6 shadow-sm">
+                <div className="flex items-center justify-between">
+                  {/* Left */}
+                  <div className="flex flex-col gap-3">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="font-bold text-gray-900">{class_id}</span>
+                    </div>
+                    <div className="flex items-center gap-6 text-sm">
+                      <div className="flex items-center gap-1.5 text-gray-600">
+                        <Users size={14} className="text-gray-400" />
+                        <span>{total_students} Students</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <TrendingUp size={14} className="text-gray-400" />
+                        <span className="font-bold text-gray-900">{class_average_percentage}%</span>
+                        <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${badge}`}>
+                          {label}
+                        </span>
+                        <span className="text-gray-400 text-xs">Class Average</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 text-gray-600">
+                        <AlertTriangle
+                          size={14}
+                          className={students_needing_attention > 0 ? 'text-orange-500' : 'text-gray-300'}
+                        />
+                        <span
+                          className={
+                            students_needing_attention > 0
+                              ? 'text-orange-600 font-semibold'
+                              : 'text-gray-400'
+                          }
+                        >
+                          {students_needing_attention} Need Attention
+                        </span>
+                      </div>
+                    </div>
+                  </div>
 
-                {/* Stats inline */}
-                <div className="flex items-center gap-6 text-sm">
-                  <div className="flex items-center gap-1.5 text-gray-600">
-                    <Users size={14} className="text-gray-400" />
-                    <span>{c.students} Students</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <TrendingUp size={14} className="text-gray-400" />
-                    <span className="font-bold text-gray-900">{c.avgScore}%</span>
-                    <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${c.qualityColor}`}>
-                      {c.quality}
-                    </span>
-                    <span className="text-gray-400 text-xs">Class Average</span>
-                  </div>
-                  <div className="flex items-center gap-1.5 text-gray-600">
-                    <AlertTriangle size={14} className={c.needAttention > 0 ? 'text-orange-500' : 'text-gray-300'} />
-                    <span className={c.needAttention > 0 ? 'text-orange-600 font-semibold' : 'text-gray-400'}>
-                      {c.needAttention} Need Attention
-                    </span>
-                  </div>
+                  {/* View Details */}
+                  <Link
+                    href={`/tutor/analytics/${encodeURIComponent(class_id)}`}
+                    className="flex items-center gap-1.5 bg-[#FFC107] hover:bg-yellow-500 text-black font-semibold text-sm px-5 py-2.5 rounded-lg transition-colors flex-shrink-0"
+                  >
+                    View Details &rsaquo;
+                  </Link>
                 </div>
               </div>
-
-              {/* View Details button */}
-              <Link
-                href={`/tutor/analytics/${c.id}`}
-                className="flex items-center gap-1.5 bg-[#FFC107] hover:bg-yellow-500 text-black font-semibold text-sm px-5 py-2.5 rounded-lg transition-colors flex-shrink-0"
-              >
-                View Details &rsaquo;
-              </Link>
-            </div>
-          </div>
-        ))}
-      </div>
+            );
+          })}
+        </div>
+      )}
     </>
   );
 }
