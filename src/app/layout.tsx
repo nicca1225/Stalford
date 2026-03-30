@@ -12,7 +12,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: "Stalford EduCore",
-  description: "Stalford Learning Centre - Learning Management System",
+  description: "Stalford EduCore - Learning Management System",
 };
 
 export default function RootLayout({

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { BookOpen, CheckCircle, Clock } from 'lucide-react';
+import { BookOpen, CheckCircle, Clock, Info } from 'lucide-react';
 import SubjectIcon from '@/components/ui/SubjectIcon';
 import ProgressBar from '@/components/ui/ProgressBar';
 import ConfidenceBadge from '@/components/ui/ConfidenceBadge';
@@ -124,7 +124,13 @@ export default function StudentHomePage() {
 
               {/* Confidence */}
               <div className="flex items-center justify-between">
-                <span className="text-xs text-zinc-400 font-medium">Confidence Level</span>
+                <div className="flex items-center gap-1 group relative">
+                  <span className="text-xs text-zinc-400 font-medium">CoreScore</span>
+                  <Info size={11} className="text-zinc-300 cursor-pointer" />
+                  <div className="absolute left-full top-1/2 -translate-y-1/2 ml-1.5 w-52 rounded-lg bg-yellow-400 px-3 py-2 text-xs text-zinc-800 shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-10">
+                    CoreScore is a confidence score powered by data analytics, reflecting how well a student has mastered the subject.
+                  </div>
+                </div>
                 <ConfidenceBadge score={s.confidence} />
               </div>
 
